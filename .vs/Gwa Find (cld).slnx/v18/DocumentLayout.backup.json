@@ -72,7 +72,7 @@
               "RelativeDocumentMoniker": "Gwa Find (cld)\\wwwroot\\css\\site.css",
               "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\wwwroot\\css\\site.css*",
               "RelativeToolTip": "Gwa Find (cld)\\wwwroot\\css\\site.css*",
-              "ViewState": "AgIAAEcBAAAAAAAAAAAcwGYBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEoBAAAAAAAAAAAAAGUBAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2026-05-11T06:50:13.162Z",
               "EditorCaption": ""
@@ -83,12 +83,11 @@
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml*",
-              "RelativeToolTip": "Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml*",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAACgAAAAAAAAAAAAcwEcAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-11T06:49:54.865Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-11T06:49:54.865Z"
             },
             {
               "$type": "Document",
@@ -100,8 +99,7 @@
               "RelativeToolTip": "Gwa Find (cld)\\Migrations\\20260511064135_InitialCreate.cs",
               "ViewState": "AgIAAGwBAAAAAAAAAAAAAIMBAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-11T06:43:26.358Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-11T06:43:26.358Z"
             },
             {
               "$type": "Document",
@@ -125,8 +123,7 @@
               "RelativeToolTip": "Gwa Find (cld)\\Program.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAswBoAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-11T06:02:54.869Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-11T06:02:54.869Z"
             },
             {
               "$type": "Document",
@@ -134,12 +131,11 @@
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Data\\ApplicationDbContext.cs*",
-              "RelativeToolTip": "Gwa Find (cld)\\Data\\ApplicationDbContext.cs*",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Gwa Find (cld)\\Data\\ApplicationDbContext.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAAwwD4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-11T06:02:32.163Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-11T06:02:32.163Z"
             },
             {
               "$type": "Document",
