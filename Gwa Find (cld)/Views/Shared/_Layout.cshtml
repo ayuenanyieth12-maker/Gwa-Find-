@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — GwaFind</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a class="nav-logo" asp-controller="Home" asp-action="Index">
+                Gwa<span>Find</span>
+            </a>
+
+            <div class="nav-links">
+                <a asp-controller="Listing" asp-action="Index">Browse listings</a>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if (User.IsInRole("Owner"))
+                    {
+                        <a asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                        <a asp-controller="Listing" asp-action="Create">Post a property</a>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-controller="Admin" asp-action="Index">Admin panel</a>
+                    }
+                    <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-outline">
+                            Log out
+                        </button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-outline">Log in</a>
+                    <a asp-controller="Account" asp-action="Register" class="btn btn-primary">Register</a>
+                }
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE CONTENT -->
+    <main>
+        @RenderBody()
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-logo">Gwa<span>Find</span></p>
+            <p class="footer-tagline">Find your gwa.</p>
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy</a>
+            </div>
+            <p class="footer-copy">&copy; 2026 GwaFind. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
