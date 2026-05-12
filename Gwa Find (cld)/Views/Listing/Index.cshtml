@@ -1,0 +1,129 @@
+﻿@model List<GwaFind.Models.Listing>
+@{
+    ViewData["Title"] = "Browse listings";
+}
+
+<div class="listings-page">
+    <!-- SEARCH BAR -->
+    <div class="listings-search-bar">
+        <div class="container">
+            <form method="get" class="listings-search-form">
+                <input type="text" name="search" value="@ViewBag.Search" class="form-control" placeholder="Search by location or title..." />
+                <select name="type" class="form-control">
+                    <option value="">All types</option>
+                    <option value="Rent" selected="@(ViewBag.Type == "Rent")">For rent</option>
+                    <option value="Sale" selected="@(ViewBag.Type == "Sale")">For sale</option>
+                </select>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-magnifying-glass"></i> Search
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="listings-layout">
+
+            <!-- SIDEBAR FILTERS -->
+            <div class="listings-sidebar">
+                <form method="get">
+                    <input type="hidden" name="search" value="@ViewBag.Search" />
+                    <div class="filter-section">
+                        <div class="filter-title">Filters</div>
+
+                        <div class="filter-group">
+                            <div class="filter-label">Listing type</div>
+                            <label class="filter-option">
+                                <input type="checkbox" name="type" value="Rent" @(ViewBag.Type == "Rent" ? "checked" : "") /> For rent
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" name="type" value="Sale" @(ViewBag.Type == "Sale" ? "checked" : "") /> For sale
+                            </label>
+                        </div>
+
+                        <div class="filter-group">
+                            <div class="filter-label">Property type</div>
+                            <label class="filter-option"><input type="radio" name="propertyType" value="" @(string.IsNullOrEmpty(ViewBag.PropertyType as string) ? "checked" : "") /> All</label>
+                            <label class="filter-option"><input type="radio" name="propertyType" value="Apartment" @(ViewBag.PropertyType == "Apartment" ? "checked" : "") /> Apartment</label>
+                            <label class="filter-option"><input type="radio" name="propertyType" value="House" @(ViewBag.PropertyType == "House" ? "checked" : "") /> House</label>
+                            <label class="filter-option"><input type="radio" name="propertyType" value="Self-contained" @(ViewBag.PropertyType == "Self-contained" ? "checked" : "") /> Self-contained</label>
+                            <label class="filter-option"><input type="radio" name="propertyType" value="Land" @(ViewBag.PropertyType == "Land" ? "checked" : "") /> Land</label>
+                        </div>
+
+                        <div class="filter-group">
+                            <div class="filter-label">Bedrooms</div>
+                            <label class="filter-option"><input type="radio" name="bedrooms" value="" @(ViewBag.Bedrooms == null ? "checked" : "") /> Any</label>
+                            <label class="filter-option"><input type="radio" name="bedrooms" value="1" @(ViewBag.Bedrooms == 1 ? "checked" : "") /> 1+</label>
+                            <label class="filter-option"><input type="radio" name="bedrooms" value="2" @(ViewBag.Bedrooms == 2 ? "checked" : "") /> 2+</label>
+                            <label class="filter-option"><input type="radio" name="bedrooms" value="3" @(ViewBag.Bedrooms == 3 ? "checked" : "") /> 3+</label>
+                        </div>
+
+                        <div class="filter-group">
+                            <div class="filter-label">Price range (UGX)</div>
+                            <div class="price-range">
+                                <input type="number" name="minPrice" value="@ViewBag.MinPrice" class="form-control" placeholder="Min" />
+                                <span>—</span>
+                                <input type="number" name="maxPrice" value="@ViewBag.MaxPrice" class="form-control" placeholder="Max" />
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block" style="margin-top:8px">Apply filters</button>
+                        <a href="/Listing" class="btn btn-block" style="margin-top:8px">Clear all</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- RESULTS -->
+            <div class="listings-results">
+                <div class="listings-results-header">
+                    <span class="results-count">@ViewBag.TotalCount listings found @(!string.IsNullOrEmpty(ViewBag.Search as string) ? $"for \"{ViewBag.Search}\"" : "")</span>
+                </div>
+
+                @if (!Model.Any())
+                {
+                    <div class="empty-state">
+                        <i class="fa-solid fa-house-circle-xmark"></i>
+                        <p>No listings found. Try adjusting your filters.</p>
+                        <a href="/Listing" class="btn btn-primary">Clear filters</a>
+                    </div>
+                }
+                else
+                {
+                    <div class="grid-2">
+                        @foreach (var listing in Model)
+                        {
+                            <a href="/Listing/Details/@listing.Id" class="card listing-card">
+                                <div class="listing-card-img">
+                                    @if (listing.Images != null && listing.Images.Any())
+                                    {
+                                        <img src="@listing.Images.First().ImagePath" alt="@listing.Title" />
+                                    }
+                                    else
+                                    {
+                                        <i class="fa-solid @(listing.PropertyType == "House" ? "fa-house" : "fa-building")"></i>
+                                    }
+                                    <span class="badge @(listing.ListingType == "Rent" ? "badge-rent" : "badge-sale")">
+                                        For @listing.ListingType.ToLower()
+                                    </span>
+                                </div>
+                                <div class="listing-card-body">
+                                    <div class="listing-price">
+                                        UGX @listing.Price.ToString("N0")
+                                        @if (listing.ListingType == "Rent")
+                                        {
+                                            <span>/ @listing.PricePeriod.ToLower()</span>
+                                        }
+                                    </div>
+                                    <div class="listing-title">@listing.Title</div>
+                                    <div class="listing-meta">
+                                        <span><i class="fa-solid fa-location-dot"></i> @listing.Location, @listing.District</span>
+                                    </div>
+                                </div>
+                            </a>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

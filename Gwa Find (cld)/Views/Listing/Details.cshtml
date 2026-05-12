@@ -1,0 +1,202 @@
+﻿@model GwaFind.Models.Listing
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container" style="padding-top:24px;padding-bottom:48px">
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <a asp-controller="Listing" asp-action="Index">Listings</a>
+        <i class="fa-solid fa-chevron-right"></i>
+        <span>@Model.Title</span>
+    </div>
+
+    <div class="details-layout">
+
+        <!-- MAIN CONTENT -->
+        <div class="details-main">
+
+            <!-- PHOTOS -->
+            <div class="details-photos">
+                @if (Model.Images != null && Model.Images.Any())
+                {
+                    <div class="photo-main">
+                        <img src="@Model.Images.First().ImagePath" alt="@Model.Title" id="mainPhoto" />
+                    </div>
+                    @if (Model.Images.Count > 1)
+                    {
+                        <div class="photo-thumbs">
+                            @foreach (var img in Model.Images)
+                            {
+                                <img src="@img.ImagePath" alt="photo" onclick="document.getElementById('mainPhoto').src='@img.ImagePath'" />
+                            }
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="photo-placeholder">
+                        <i class="fa-solid @(Model.PropertyType == "House" ? "fa-house" : "fa-building")"></i>
+                        <p>No photos uploaded</p>
+                    </div>
+                }
+            </div>
+
+            <!-- LISTING INFO -->
+            <div class="details-info">
+                <div class="details-top">
+                    <div>
+                        <div class="details-price">
+                            UGX @Model.Price.ToString("N0")
+                            @if (Model.ListingType == "Rent")
+                            {
+                                <span>/ @Model.PricePeriod.ToLower()</span>
+                            }
+                        </div>
+                        <div class="details-title">@Model.Title</div>
+                        <div class="details-location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            @Model.Location, @Model.District
+                        </div>
+                    </div>
+                    <span class="badge @(Model.ListingType == "Rent" ? "badge-rent" : "badge-sale")">
+                        For @Model.ListingType.ToLower()
+                    </span>
+                </div>
+
+                <!-- SPECS -->
+                <div class="details-specs">
+                    <div class="spec-item">
+                        <div class="spec-val">@Model.Bedrooms</div>
+                        <div class="spec-label">Bedrooms</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-val">@Model.Bathrooms</div>
+                        <div class="spec-label">Bathrooms</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-val">@Model.AreaSqM m²</div>
+                        <div class="spec-label">Area</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-val">@Model.PropertyType</div>
+                        <div class="spec-label">Type</div>
+                    </div>
+                </div>
+
+                <!-- DESCRIPTION -->
+                <div class="details-section">
+                    <div class="details-section-title">Description</div>
+                    <p class="details-description">@Model.Description</p>
+                </div>
+
+                <!-- AMENITIES -->
+                @if (!string.IsNullOrEmpty(Model.Amenities))
+                {
+                    <div class="details-section">
+                        <div class="details-section-title">Amenities</div>
+                        <div class="amenities-list">
+                            @foreach (var amenity in Model.Amenities.Split(','))
+                            {
+                                <span class="amenity-tag">
+                                    <i class="fa-solid fa-check"></i> @amenity.Trim()
+                                </span>
+                            }
+                        </div>
+                    </div>
+                }
+
+                <!-- REPORT -->
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="report-row">
+                        <button class="report-btn" onclick="document.getElementById('reportModal').style.display='flex'">
+                            <i class="fa-solid fa-flag"></i> Report this listing
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="details-sidebar">
+
+            <!-- OWNER CARD -->
+            <div class="owner-card">
+                <div class="owner-info">
+                    <div class="owner-avatar">@Model.Owner.FullName[0]</div>
+                    <div>
+                        <div class="owner-name">@Model.Owner.FullName</div>
+                        <div class="owner-label">Property owner</div>
+                    </div>
+                </div>
+                <div class="owner-meta">Listed @Model.CreatedAt.ToString("MMM dd, yyyy")</div>
+
+                @if (User.Identity.IsAuthenticated && !User.IsInRole("Owner"))
+                {
+                    <form asp-action="SendInquiry" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="listingId" value="@Model.Id" />
+                        <textarea name="message" class="form-control inquiry-box"
+                              rows="3" placeholder="Hi, I am interested in this property. Is it still available?"></textarea>
+                        <button type="submit" class="btn btn-primary btn-block" style="margin-top:8px">
+                            <i class="fa-solid fa-envelope"></i> Send inquiry
+                        </button>
+                    </form>
+
+                    <form asp-action="SaveFavorite" method="post" style="margin-top:8px">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="listingId" value="@Model.Id" />
+                        <button type="submit" class="btn btn-block">
+                            <i class="fa-regular fa-heart"></i> Save to favorites
+                        </button>
+                    </form>
+                }
+                else if (!User.Identity.IsAuthenticated)
+                {
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-block">
+                        <i class="fa-solid fa-right-to-bracket"></i> Log in to inquire
+                    </a>
+                }
+            </div>
+
+            <!-- SUCCESS MESSAGE -->
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success">
+                    <i class="fa-solid fa-circle-check"></i> @TempData["Success"]
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- REPORT MODAL -->
+<div id="reportModal" class="modal-overlay" style="display:none">
+    <div class="modal-card">
+        <div class="modal-header">
+            <div class="modal-title">Report this listing</div>
+            <button onclick="document.getElementById('reportModal').style.display='none'" class="modal-close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <form asp-action="Report" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="listingId" value="@Model.Id" />
+            <div class="form-group">
+                <label>Reason for reporting</label>
+                <select name="reason" class="form-control">
+                    <option>Fake listing / scam</option>
+                    <option>Incorrect price</option>
+                    <option>Incorrect location</option>
+                    <option>Already taken</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-danger btn-block">Submit report</button>
+        </form>
+    </div>
+</div>

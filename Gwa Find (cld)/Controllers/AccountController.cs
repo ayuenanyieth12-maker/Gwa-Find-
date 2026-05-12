@@ -51,11 +51,7 @@ namespace GwaFind.Controllers
             {
                 await _userManager.AddToRoleAsync(user, model.Role);
                 await _signInManager.SignInAsync(user, isPersistent: false);
-
-                if (model.Role == "Owner")
-                    return RedirectToAction("Index", "Dashboard");
-
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home"); // send everyone home for now
             }
 
             foreach (var error in result.Errors)

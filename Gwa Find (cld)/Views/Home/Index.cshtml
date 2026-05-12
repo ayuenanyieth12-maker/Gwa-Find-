@@ -1,8 +1,132 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!-- HERO SECTION -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>Find your <span>gwa.</span></h1>
+        <p>Browse houses, apartments and land for rent or sale across Uganda</p>
+
+        <form asp-controller="Listing" asp-action="Index" method="get" class="hero-search">
+            <input type="text" name="search" class="hero-input" placeholder="Search by location, e.g. Ntinda, Kampala..." />
+            <select name="type" class="hero-select">
+                <option value="">All types</option>
+                <option value="Rent">For rent</option>
+                <option value="Sale">For sale</option>
+            </select>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-magnifying-glass"></i> Search
+            </button>
+        </form>
+
+        <div class="hero-pills">
+            <a href="/Listing?type=Rent" class="pill">For rent</a>
+            <a href="/Listing?type=Sale" class="pill">For sale</a>
+            <a href="/Listing?propertyType=Apartment" class="pill">Apartments</a>
+            <a href="/Listing?propertyType=House" class="pill">Houses</a>
+            <a href="/Listing?propertyType=Land" class="pill">Land</a>
+        </div>
+    </div>
+</div>
+
+<!-- STATS SECTION -->
+<div class="container">
+    <div class="home-stats">
+        <div class="home-stat">
+            <div class="home-stat-num">1,240+</div>
+            <div class="home-stat-label">Active listings</div>
+        </div>
+        <div class="home-stat">
+            <div class="home-stat-num">340+</div>
+            <div class="home-stat-label">Property owners</div>
+        </div>
+        <div class="home-stat">
+            <div class="home-stat-num">5,800+</div>
+            <div class="home-stat-label">Seekers registered</div>
+        </div>
+    </div>
+</div>
+
+<!-- FEATURED LISTINGS -->
+<div class="container page-section">
+    <div class="section-header">
+        <div class="section-title">Featured listings</div>
+        <a href="/Listing" class="btn btn-outline btn-sm">View all</a>
+    </div>
+
+    <div class="grid-3">
+        <!-- placeholder cards until we hook up the database -->
+        <div class="card listing-card">
+            <div class="listing-card-img">
+                <i class="fa-solid fa-building"></i>
+                <span class="badge badge-rent">For rent</span>
+            </div>
+            <div class="listing-card-body">
+                <div class="listing-price">UGX 800,000 <span>/ mo</span></div>
+                <div class="listing-title">2-bedroom apartment, Ntinda</div>
+                <div class="listing-meta">
+                    <span><i class="fa-solid fa-bed"></i> 2 beds</span>
+                    <span><i class="fa-solid fa-shower"></i> 1 bath</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Kampala</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card listing-card">
+            <div class="listing-card-img">
+                <i class="fa-solid fa-house"></i>
+                <span class="badge badge-sale">For sale</span>
+            </div>
+            <div class="listing-card-body">
+                <div class="listing-price">UGX 120M</div>
+                <div class="listing-title">3-bedroom house, Wakiso</div>
+                <div class="listing-meta">
+                    <span><i class="fa-solid fa-bed"></i> 3 beds</span>
+                    <span><i class="fa-solid fa-shower"></i> 2 baths</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Wakiso</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card listing-card">
+            <div class="listing-card-img">
+                <i class="fa-solid fa-building"></i>
+                <span class="badge badge-rent">For rent</span>
+            </div>
+            <div class="listing-card-body">
+                <div class="listing-price">UGX 1,200,000 <span>/ mo</span></div>
+                <div class="listing-title">Self-contained, Kisaasi</div>
+                <div class="listing-meta">
+                    <span><i class="fa-solid fa-bed"></i> 1 bed</span>
+                    <span><i class="fa-solid fa-shower"></i> 1 bath</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Kampala</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how-it-works">
+    <div class="container">
+        <div class="section-title" style="text-align:center;margin-bottom:32px">How GwaFind works</div>
+        <div class="grid-3">
+            <div class="how-card">
+                <div class="how-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <div class="how-title">Search</div>
+                <div class="how-text">Browse hundreds of verified listings across Uganda filtered by location, price and type</div>
+            </div>
+            <div class="how-card">
+                <div class="how-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="how-title">Inquire</div>
+                <div class="how-text">Contact the property owner directly through our platform — no middlemen, no scams</div>
+            </div>
+            <div class="how-card">
+                <div class="how-icon"><i class="fa-solid fa-key"></i></div>
+                <div class="how-title">Move in</div>
+                <div class="how-text">Find your perfect gwa and move in. It's that simple.</div>
+            </div>
+        </div>
+    </div>
 </div>
