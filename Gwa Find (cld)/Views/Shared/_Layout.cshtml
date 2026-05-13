@@ -19,14 +19,19 @@
             </a>
 
             <div class="nav-links">
-                <a asp-controller="Listing" asp-action="Index">Browse listings</a>
-
                 @if (User.Identity.IsAuthenticated)
                 {
+                    @if (User.IsInRole("Seeker"))
+                    {
+                        <a asp-controller="Listing" asp-action="Index">Browse listings</a>
+                        <a asp-controller="Dashboard" asp-action="Favorites">Saved</a>
+                    }
                     @if (User.IsInRole("Owner"))
                     {
                         <a asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+                        <a asp-controller="Dashboard" asp-action="MyListings">My listings</a>
                         <a asp-controller="Listing" asp-action="Create">Post a property</a>
+                        <a asp-controller="Account" asp-action="Profile">Profile</a>
                     }
                     @if (User.IsInRole("Admin"))
                     {
@@ -34,13 +39,12 @@
                     }
                     <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline">
                         @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-outline">
-                            Log out
-                        </button>
+                        <button type="submit" class="btn btn-outline">Log out</button>
                     </form>
                 }
                 else
                 {
+                    <a asp-controller="Listing" asp-action="Index">Browse listings</a>
                     <a asp-controller="Account" asp-action="Login" class="btn btn-outline">Log in</a>
                     <a asp-controller="Account" asp-action="Register" class="btn btn-primary">Register</a>
                 }

@@ -1,6 +1,7 @@
 ﻿@model List<GwaFind.Models.Listing>
 @{
-    ViewData["Title"] = "Dashboard";
+    ViewData["Title"] = "My Listings";
+    var current = ViewBag.CurrentStatus as string ?? "All";
 }
 
 <div class="dash-layout">
@@ -19,10 +20,10 @@
             <div class="dash-user-role">Property owner</div>
         </div>
 
-        <a asp-action="Index" class="dash-nav-item active">
+        <a asp-action="Index" class="dash-nav-item">
             <i class="fa-solid fa-chart-bar"></i> Dashboard
         </a>
-        <a asp-action="MyListings" class="dash-nav-item">
+        <a asp-action="MyListings" class="dash-nav-item active">
             <i class="fa-solid fa-list"></i> My listings
         </a>
         <a asp-controller="Listing" asp-action="Create" class="dash-nav-item">
@@ -42,7 +43,7 @@
     <!-- CONTENT -->
     <div class="dash-content">
         <div class="dash-header">
-            <div class="dash-title">Dashboard</div>
+            <div class="dash-title">My listings</div>
             <a asp-controller="Listing" asp-action="Create" class="btn btn-primary">
                 <i class="fa-solid fa-plus"></i> Post new listing
             </a>
@@ -53,38 +54,32 @@
             <div class="alert alert-success">@TempData["Success"]</div>
         }
 
-        <!-- STATS — clickable, filter MyListings -->
-        <div class="grid-4" style="margin-bottom:24px">
-            <a asp-action="MyListings" asp-route-status="All" class="stat-card stat-card-link">
-                <div class="stat-num">@ViewBag.TotalListings</div>
-                <div class="stat-label">Total listings</div>
-            </a>
-            <a asp-action="MyListings" asp-route-status="Active" class="stat-card stat-card-link">
-                <div class="stat-num green">@ViewBag.ActiveListings</div>
-                <div class="stat-label">Active</div>
-            </a>
-            <a asp-action="MyListings" asp-route-status="Pending" class="stat-card stat-card-link">
-                <div class="stat-num warn">@ViewBag.PendingListings</div>
-                <div class="stat-label">Pending approval</div>
-            </a>
-            <a asp-action="MyListings" asp-route-status="Declined" class="stat-card stat-card-link">
-                <div class="stat-num" style="color:#A32D2D">@ViewBag.DeclinedListings</div>
-                <div class="stat-label">Declined</div>
-            </a>
+        <!-- STATUS TABS -->
+        <div class="status-tabs" style="display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap">
+            @foreach (var tab in new[] { "All", "Active", "Pending", "Declined" })
+            {
+                var count = tab == "All" ? ViewBag.AllCount :
+                tab == "Active" ? ViewBag.ActiveCount :
+                tab == "Pending" ? ViewBag.PendingCount :
+                ViewBag.DeclinedCount;
+                <a asp-action="MyListings" asp-route-status="@tab"
+                   class="btn @(current == tab ? "btn-primary" : "btn-outline")" style="gap:6px">
+                    @tab <span style="background:rgba(0,0,0,0.1);padding:1px 7px;border-radius:99px;font-size:12px">@count</span>
+                </a>
+            }
         </div>
 
-        <!-- RECENT INQUIRIES SUMMARY -->
+        <!-- TABLE -->
         <div class="table-card">
-            <div class="table-header">
-                <div class="table-title">Recent listings</div>
-                <a asp-action="MyListings" class="btn btn-sm">View all</a>
-            </div>
             @if (!Model.Any())
             {
                 <div class="empty-state">
                     <i class="fa-solid fa-house-circle-xmark"></i>
-                    <p>You haven't posted any listings yet.</p>
-                    <a asp-controller="Listing" asp-action="Create" class="btn btn-primary">Post your first listing</a>
+                    <p>No @(current == "All" ? "" : current.ToLower()) listings found.</p>
+                    @if (current == "All")
+                    {
+                        <a asp-controller="Listing" asp-action="Create" class="btn btn-primary">Post your first listing</a>
+                    }
                 </div>
             }
             else
@@ -97,19 +92,38 @@
                             <th>Price</th>
                             <th>Status</th>
                             <th>Inquiries</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var listing in Model.Take(5))
+                        @foreach (var listing in Model)
                         {
                             <tr>
-                                <td><strong>@listing.Title</strong><br /><small style="color:#888">@listing.Location, @listing.District</small></td>
+                                <td>
+                                    <strong>@listing.Title</strong><br />
+                                    <small style="color:#888">@listing.Location, @listing.District</small>
+                                </td>
                                 <td>@listing.ListingType</td>
                                 <td>UGX @listing.Price.ToString("N0")</td>
                                 <td>
                                     <span class="badge badge-@listing.Status.ToLower()">@listing.Status</span>
                                 </td>
                                 <td>@(listing.Inquiries?.Count ?? 0)</td>
+                                <td>
+                                    <div style="display:flex;gap:6px">
+                                        <a asp-controller="Listing" asp-action="Details" asp-route-id="@listing.Id" class="btn btn-sm">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <form asp-action="Delete" method="post" style="display:inline"
+                                              onsubmit="return confirm('Delete this listing?')">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="id" value="@listing.Id" />
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
                             </tr>
                         }
                     </tbody>

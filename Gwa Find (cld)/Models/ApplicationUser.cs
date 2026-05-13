@@ -8,5 +8,6 @@ namespace GwaFind.Models
         public string PhoneNumber { get; set; }
         public string Role { get; set; } // "Owner", "Seeker", "Admin"
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public string? ProfilePicture { get; set; }
     }
 }
