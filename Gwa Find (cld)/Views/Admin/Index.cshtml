@@ -1,0 +1,318 @@
+﻿@{
+    ViewData["Title"] = "Admin Panel";
+    var pendingListings = ViewBag.PendingListingsList as List<GwaFind.Models.Listing>;
+    var flaggedListings = ViewBag.FlaggedListings as List<GwaFind.Models.Listing>;
+    var allUsers = ViewBag.AllUsers as List<GwaFind.Models.ApplicationUser>;
+}
+
+<div class="dash-layout">
+    <!-- SIDEBAR -->
+    <div class="dash-sidebar">
+        <div class="dash-user">
+            <div class="dash-avatar">A</div>
+            <div class="dash-user-name">@ViewBag.FullName</div>
+            <div class="dash-user-role">Administrator</div>
+        </div>
+
+        <a href="#" onclick="showTab('pending')" class="dash-nav-item active" id="nav-pending">
+            <i class="fa-solid fa-clock"></i> Pending listings
+            @if (ViewBag.PendingListings > 0)
+            {
+                <span style="background:#fef3c7;color:#d97706;padding:1px 8px;border-radius:99px;font-size:11px;margin-left:auto">
+                    @ViewBag.PendingListings
+                </span>
+            }
+        </a>
+        <a href="#" onclick="showTab('flagged')" class="dash-nav-item" id="nav-flagged">
+            <i class="fa-solid fa-flag"></i> Flagged listings
+            @if (ViewBag.TotalReports > 0)
+            {
+                <span style="background:#fee2e2;color:#A32D2D;padding:1px 8px;border-radius:99px;font-size:11px;margin-left:auto">
+                    @ViewBag.TotalReports
+                </span>
+            }
+        </a>
+        <a href="#" onclick="showTab('users')" class="dash-nav-item" id="nav-users">
+            <i class="fa-solid fa-users"></i> All users
+            <span style="background:#f0f0f0;color:#555;padding:1px 8px;border-radius:99px;font-size:11px;margin-left:auto">
+                @ViewBag.TotalUsers
+            </span>
+        </a>
+
+        <form asp-controller="Account" asp-action="Logout" method="post" style="margin-top:auto">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="dash-nav-item"
+                    style="color:#A32D2D;background:none;border:none;width:100%;text-align:left;cursor:pointer">
+                <i class="fa-solid fa-right-from-bracket"></i> Log out
+            </button>
+        </form>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="dash-content">
+        <div class="dash-header">
+            <div class="dash-title" id="tab-title">Pending listings</div>
+        </div>
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">@TempData["Success"]</div>
+        }
+
+        <!-- STATS -->
+        <div class="grid-4" style="margin-bottom:32px">
+            <div class="stat-card">
+                <div class="stat-num">@ViewBag.TotalListings</div>
+                <div class="stat-label">Total listings</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num warn">@ViewBag.PendingListings</div>
+                <div class="stat-label">Pending approval</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num green">@ViewBag.ActiveListings</div>
+                <div class="stat-label">Active listings</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num" style="color:#A32D2D">@ViewBag.TotalReports</div>
+                <div class="stat-label">Total reports</div>
+            </div>
+        </div>
+
+        <!-- TAB: PENDING -->
+        <div id="tab-pending" class="tab-panel">
+            <div class="table-card">
+                <div class="table-header">
+                    <div class="table-title">
+                        <i class="fa-solid fa-clock" style="color:#d97706"></i> Pending listings
+                        <span style="background:#fef3c7;color:#d97706;padding:2px 10px;border-radius:99px;font-size:12px;margin-left:6px">
+                            @ViewBag.PendingListings
+                        </span>
+                    </div>
+                </div>
+                @if (pendingListings == null || !pendingListings.Any())
+                {
+                    <div class="empty-state">
+                        <i class="fa-solid fa-circle-check" style="color:#10b981"></i>
+                        <p>No listings pending approval.</p>
+                    </div>
+                }
+                else
+                {
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Owner</th>
+                                <th>Type</th>
+                                <th>Price</th>
+                                <th>Posted</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var listing in pendingListings)
+                            {
+                                <tr>
+                                    <td>
+                                        <strong>@listing.Title</strong><br />
+                                        <small style="color:#888">@listing.Location, @listing.District</small>
+                                    </td>
+                                    <td>@listing.Owner?.FullName<br /><small style="color:#888">@listing.Owner?.Email</small></td>
+                                    <td>@listing.ListingType · @listing.PropertyType</td>
+                                    <td>UGX @listing.Price.ToString("N0")</td>
+                                    <td><small>@listing.CreatedAt.ToString("MMM dd, yyyy")</small></td>
+                                    <td>
+                                        <div style="display:flex;gap:6px;flex-wrap:wrap">
+                                            <a asp-controller="Listing" asp-action="Details" asp-route-id="@listing.Id"
+                                               class="btn btn-sm" target="_blank">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
+                                            <form asp-action="Approve" method="post" style="display:inline">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="id" value="@listing.Id" />
+                                                <button type="submit" class="btn btn-sm btn-primary">
+                                                    <i class="fa-solid fa-check"></i> Approve
+                                                </button>
+                                            </form>
+                                            <form asp-action="Decline" method="post" style="display:inline"
+                                                  onsubmit="return confirm('Decline this listing?')">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="id" value="@listing.Id" />
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    <i class="fa-solid fa-xmark"></i> Decline
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+
+        <!-- TAB: FLAGGED -->
+        <div id="tab-flagged" class="tab-panel" style="display:none">
+            <div class="table-card">
+                <div class="table-header">
+                    <div class="table-title">
+                        <i class="fa-solid fa-flag" style="color:#A32D2D"></i> Flagged listings
+                    </div>
+                </div>
+                @if (flaggedListings == null || !flaggedListings.Any())
+                {
+                    <div class="empty-state">
+                        <i class="fa-solid fa-flag" style="color:#ccc"></i>
+                        <p>No flagged listings.</p>
+                    </div>
+                }
+                else
+                {
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Owner</th>
+                                <th>Reports</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var listing in flaggedListings)
+                            {
+                                <tr>
+                                    <td>
+                                        <strong>@listing.Title</strong><br />
+                                        <small style="color:#888">@listing.Location, @listing.District</small>
+                                    </td>
+                                    <td>@listing.Owner?.FullName</td>
+                                    <td>
+                                        <span style="background:#fee2e2;color:#A32D2D;padding:2px 10px;border-radius:99px;font-size:12px">
+                                            @(listing.Reports != null ? listing.Reports.Count.ToString() : "0") reports
+                                        </span>
+                                    </td>
+                                    <td><span class="badge badge-@listing.Status.ToLower()">@listing.Status</span></td>
+                                    <td>
+                                        <div style="display:flex;gap:6px">
+                                            <a asp-controller="Listing" asp-action="Details" asp-route-id="@listing.Id"
+                                               class="btn btn-sm" target="_blank">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </a>
+                                            <form asp-action="Remove" method="post" style="display:inline"
+                                                  onsubmit="return confirm('Permanently remove this listing?')">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="id" value="@listing.Id" />
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    <i class="fa-solid fa-trash"></i> Remove
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+
+        <!-- TAB: USERS -->
+        <div id="tab-users" class="tab-panel" style="display:none">
+            <div class="table-card">
+                <div class="table-header">
+                    <div class="table-title"><i class="fa-solid fa-users"></i> All users</div>
+                </div>
+                @if (allUsers == null || !allUsers.Any())
+                {
+                    <div class="empty-state"><p>No users found.</p></div>
+                }
+                else
+                {
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Role</th>
+                                <th>Joined</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var u in allUsers)
+                            {
+                                <tr>
+                                    <td><strong>@u.FullName</strong></td>
+                                    <td><small>@u.Email</small></td>
+                                    <td><small>@u.PhoneNumber</small></td>
+                                    <td>
+                                        <span style="background:#f0fdf4;color:#16a34a;padding:2px 10px;border-radius:99px;font-size:12px">
+                                            @u.Role
+                                        </span>
+                                    </td>
+                                    <td><small>@u.CreatedAt.ToString("MMM dd, yyyy")</small></td>
+                                    <td>
+                                        @if (u.Role != "Admin")
+                                        {
+                                            <form asp-action="DeleteUser" method="post" style="display:inline"
+                                                  onsubmit="return confirm('Delete this user? This cannot be undone.')">
+                                                @Html.AntiForgeryToken()
+                                                <input type="hidden" name="id" value="@u.Id" />
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <small style="color:#888">Protected</small>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const titles = {
+            pending: 'Pending listings',
+            flagged: 'Flagged listings',
+            users: 'All users'
+        };
+
+        function showTab(tab) {
+            // Hide all panels
+            document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+            // Remove active from all nav items
+            document.querySelectorAll('.dash-nav-item').forEach(n => n.classList.remove('active'));
+
+            // Show selected
+            document.getElementById('tab-' + tab).style.display = 'block';
+            document.getElementById('nav-' + tab).classList.add('active');
+            document.getElementById('tab-title').textContent = titles[tab];
+
+            // Update top nav hash without scrolling
+            history.replaceState(null, '', '/Admin#' + tab);
+
+            return false;
+        }
+
+        // On load, check hash and show correct tab
+        window.addEventListener('load', function () {
+            const hash = window.location.hash.replace('#', '');
+            if (hash && ['pending', 'flagged', 'users'].includes(hash)) {
+                showTab(hash);
+            }
+        });
+    </script>
+}

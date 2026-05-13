@@ -49,7 +49,7 @@ namespace GwaFind.Data
 
             builder.Entity<Report>()
                 .HasOne(r => r.Listing)
-                .WithMany()
+                .WithMany(l => l.Reports) 
                 .HasForeignKey(r => r.ListingId)
                 .OnDelete(DeleteBehavior.NoAction);
 

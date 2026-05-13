@@ -32,4 +32,31 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+// Admin seeder
+using (var scope = app.Services.CreateScope())
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+    if (!await roleManager.RoleExistsAsync("Admin"))
+        await roleManager.CreateAsync(new IdentityRole("Admin"));
+
+    var adminEmail = "admin@gwafind.com";
+    var adminUser = await userManager.FindByEmailAsync(adminEmail);
+    if (adminUser == null)
+    {
+        var admin = new ApplicationUser
+        {
+            FullName = "GwaFind Admin",
+            UserName = adminEmail,
+            Email = adminEmail,
+            PhoneNumber = "0000000000",
+            Role = "Admin",
+            CreatedAt = DateTime.Now
+        };
+        await userManager.CreateAsync(admin, "Admin@123");
+        await userManager.AddToRoleAsync(admin, "Admin");
+    }
+}
+
 app.Run();

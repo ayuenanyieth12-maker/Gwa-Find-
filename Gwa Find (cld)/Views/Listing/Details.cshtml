@@ -1,13 +1,23 @@
 ﻿@model GwaFind.Models.Listing
 @{
     ViewData["Title"] = Model.Title;
+    var isAdmin = User.IsInRole("Admin");
+    var isOwner = User.IsInRole("Owner");
+    var isSeeker = User.IsInRole("Seeker");
 }
 
 <div class="container" style="padding-top:24px;padding-bottom:48px">
 
     <!-- BREADCRUMB -->
     <div class="breadcrumb">
-        <a asp-controller="Home" asp-action="Index">Home</a>
+        @if (isAdmin)
+        {
+            <a asp-controller="Admin" asp-action="Index">Admin panel</a>
+        }
+        else
+        {
+            <a asp-controller="Home" asp-action="Index">Home</a>
+        }
         <i class="fa-solid fa-chevron-right"></i>
         <a asp-controller="Listing" asp-action="Index">Listings</a>
         <i class="fa-solid fa-chevron-right"></i>
@@ -31,7 +41,8 @@
                         <div class="photo-thumbs">
                             @foreach (var img in Model.Images)
                             {
-                                <img src="@img.ImagePath" alt="photo" onclick="document.getElementById('mainPhoto').src='@img.ImagePath'" />
+                                <img src="@img.ImagePath" alt="photo"
+                                     onclick="document.getElementById('mainPhoto').src='@img.ImagePath'" />
                             }
                         </div>
                     }
@@ -109,11 +120,12 @@
                     </div>
                 }
 
-                <!-- REPORT -->
-                @if (User.Identity.IsAuthenticated)
+                <!-- REPORT — only for seekers -->
+                @if (isSeeker)
                 {
                     <div class="report-row">
-                        <button class="report-btn" onclick="document.getElementById('reportModal').style.display='flex'">
+                        <button class="report-btn"
+                                onclick="document.getElementById('reportModal').style.display='flex'">
                             <i class="fa-solid fa-flag"></i> Report this listing
                         </button>
                     </div>
@@ -124,79 +136,145 @@
         <!-- SIDEBAR -->
         <div class="details-sidebar">
 
-            <!-- OWNER CARD -->
-            <div class="owner-card">
-                <div class="owner-info">
-                    <div class="owner-avatar">@Model.Owner.FullName[0]</div>
-                    <div>
-                        <div class="owner-name">@Model.Owner.FullName</div>
-                        <div class="owner-label">Property owner</div>
+            @if (isAdmin)
+            {
+                <!-- ADMIN CARD -->
+                <div class="owner-card">
+                    <div style="margin-bottom:12px">
+                        <div class="create-section-title" style="font-size:13px;margin-bottom:8px">
+                            <i class="fa-solid fa-shield-halved"></i> Admin review
+                        </div>
+                        <span class="badge badge-@Model.Status.ToLower()" style="font-size:13px">
+                            Status: @Model.Status
+                        </span>
+                    </div>
+
+                    <div class="owner-info" style="margin-bottom:12px">
+                        <div class="owner-avatar">@Model.Owner.FullName[0]</div>
+                        <div>
+                            <div class="owner-name">@Model.Owner.FullName</div>
+                            <div class="owner-label">@Model.Owner.Email</div>
+                            <div class="owner-label">@Model.Owner.PhoneNumber</div>
+                        </div>
+                    </div>
+                    <div class="owner-meta" style="margin-bottom:16px">
+                        Posted @Model.CreatedAt.ToString("MMM dd, yyyy")
+                    </div>
+
+                    @if (Model.Status == "Pending")
+                    {
+                        <form asp-controller="Admin" asp-action="Approve" method="post" style="margin-bottom:8px">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fa-solid fa-check"></i> Approve listing
+                            </button>
+                        </form>
+                        <form asp-controller="Admin" asp-action="Decline" method="post" style="margin-bottom:8px"
+                              onsubmit="return confirm('Decline this listing?')">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@Model.Id" />
+                            <button type="submit" class="btn btn-danger btn-block">
+                                <i class="fa-solid fa-xmark"></i> Decline listing
+                            </button>
+                        </form>
+                    }
+
+                    <form asp-controller="Admin" asp-action="Remove" method="post"
+                          onsubmit="return confirm('Permanently remove this listing?')">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@Model.Id" />
+                        <button type="submit" class="btn btn-block" style="color:#A32D2D;border-color:#A32D2D">
+                            <i class="fa-solid fa-trash"></i> Remove listing
+                        </button>
+                    </form>
+
+                    <div style="margin-top:16px">
+                        <a asp-controller="Admin" asp-action="Index" class="btn btn-block">
+                            <i class="fa-solid fa-arrow-left"></i> Back to admin panel
+                        </a>
                     </div>
                 </div>
-                <div class="owner-meta">Listed @Model.CreatedAt.ToString("MMM dd, yyyy")</div>
-
-                @if (User.Identity.IsAuthenticated && !User.IsInRole("Owner"))
-                {
-                    <form asp-action="SendInquiry" method="post">
-                        @Html.AntiForgeryToken()
-                        <input type="hidden" name="listingId" value="@Model.Id" />
-                        <textarea name="message" class="form-control inquiry-box"
-                              rows="3" placeholder="Hi, I am interested in this property. Is it still available?"></textarea>
-                        <button type="submit" class="btn btn-primary btn-block" style="margin-top:8px">
-                            <i class="fa-solid fa-envelope"></i> Send inquiry
-                        </button>
-                    </form>
-
-                    <form asp-action="SaveFavorite" method="post" style="margin-top:8px">
-                        @Html.AntiForgeryToken()
-                        <input type="hidden" name="listingId" value="@Model.Id" />
-                        <button type="submit" class="btn btn-block">
-                            <i class="fa-regular fa-heart"></i> Save to favorites
-                        </button>
-                    </form>
-                }
-                else if (!User.Identity.IsAuthenticated)
-                {
-                    <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-block">
-                        <i class="fa-solid fa-right-to-bracket"></i> Log in to inquire
-                    </a>
-                }
-            </div>
-
-            <!-- SUCCESS MESSAGE -->
-            @if (TempData["Success"] != null)
+            }
+            else
             {
-                <div class="alert alert-success">
-                    <i class="fa-solid fa-circle-check"></i> @TempData["Success"]
+                <!-- OWNER / SEEKER CARD -->
+                <div class="owner-card">
+                    <div class="owner-info">
+                        <div class="owner-avatar">@Model.Owner.FullName[0]</div>
+                        <div>
+                            <div class="owner-name">@Model.Owner.FullName</div>
+                            <div class="owner-label">Property owner</div>
+                        </div>
+                    </div>
+                    <div class="owner-meta">Listed @Model.CreatedAt.ToString("MMM dd, yyyy")</div>
+
+                    @if (User.Identity.IsAuthenticated && !isOwner)
+                    {
+                        <form asp-action="SendInquiry" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="listingId" value="@Model.Id" />
+                            <textarea name="message" class="form-control inquiry-box" rows="3"
+                              placeholder="Hi, I am interested in this property. Is it still available?"></textarea>
+                            <button type="submit" class="btn btn-primary btn-block" style="margin-top:8px">
+                                <i class="fa-solid fa-envelope"></i> Send inquiry
+                            </button>
+                        </form>
+
+                        <form asp-action="SaveFavorite" method="post" style="margin-top:8px">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="listingId" value="@Model.Id" />
+                            <button type="submit" class="btn btn-block">
+                                <i class="fa-regular fa-heart"></i> Save to favorites
+                            </button>
+                        </form>
+                    }
+                    else if (!User.Identity.IsAuthenticated)
+                    {
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-block">
+                            <i class="fa-solid fa-right-to-bracket"></i> Log in to inquire
+                        </a>
+                    }
                 </div>
+
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success">
+                        <i class="fa-solid fa-circle-check"></i> @TempData["Success"]
+                    </div>
+                }
             }
         </div>
     </div>
 </div>
 
-<!-- REPORT MODAL -->
-<div id="reportModal" class="modal-overlay" style="display:none">
-    <div class="modal-card">
-        <div class="modal-header">
-            <div class="modal-title">Report this listing</div>
-            <button onclick="document.getElementById('reportModal').style.display='none'" class="modal-close">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-        <form asp-action="Report" method="post">
-            @Html.AntiForgeryToken()
-            <input type="hidden" name="listingId" value="@Model.Id" />
-            <div class="form-group">
-                <label>Reason for reporting</label>
-                <select name="reason" class="form-control">
-                    <option>Fake listing / scam</option>
-                    <option>Incorrect price</option>
-                    <option>Incorrect location</option>
-                    <option>Already taken</option>
-                    <option>Other</option>
-                </select>
+<!-- REPORT MODAL — only for seekers -->
+@if (isSeeker)
+{
+    <div id="reportModal" class="modal-overlay" style="display:none">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title">Report this listing</div>
+                <button onclick="document.getElementById('reportModal').style.display='none'"
+                        class="modal-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
-            <button type="submit" class="btn btn-danger btn-block">Submit report</button>
-        </form>
+            <form asp-action="Report" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="listingId" value="@Model.Id" />
+                <div class="form-group">
+                    <label>Reason for reporting</label>
+                    <select name="reason" class="form-control">
+                        <option>Fake listing / scam</option>
+                        <option>Incorrect price</option>
+                        <option>Incorrect location</option>
+                        <option>Already taken</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block">Submit report</button>
+            </form>
+        </div>
     </div>
-</div>
+}

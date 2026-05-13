@@ -10,14 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
             <a class="nav-logo" asp-controller="Home" asp-action="Index">
                 Gwa<span>Find</span>
             </a>
-
             <div class="nav-links">
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -36,6 +34,9 @@
                     }
                     @if (User.IsInRole("Admin"))
                     {
+                        <a href="#" onclick="if(typeof showTab !== 'undefined') showTab('pending'); return false;">Pending listings</a>
+                        <a href="#" onclick="if(typeof showTab !== 'undefined') showTab('flagged'); return false;">Flagged</a>
+                        <a href="#" onclick="if(typeof showTab !== 'undefined') showTab('users'); return false;">All users</a>
                         <a asp-controller="Admin" asp-action="Index">Admin panel</a>
                     }
                     <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline">
@@ -52,12 +53,10 @@
             </div>
         </div>
     </nav>
-
     <!-- PAGE CONTENT -->
     <main>
         @RenderBody()
     </main>
-
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-container">
@@ -71,7 +70,6 @@
             <p class="footer-copy">&copy; 2026 GwaFind. All rights reserved.</p>
         </div>
     </footer>
-
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

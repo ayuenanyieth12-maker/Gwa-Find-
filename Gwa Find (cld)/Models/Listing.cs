@@ -49,5 +49,6 @@ namespace GwaFind.Models
         public ApplicationUser? Owner { get; set; }
         public List<ListingImage> Images { get; set; } = new();
         public List<Inquiry> Inquiries { get; set; } = new();
+        public List<Report> Reports { get; set; } = new();
     }
 }

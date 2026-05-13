@@ -1,13 +1,17 @@
 using Gwa_Find__cld_.Models;
+using GwaFind.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Gwa_Find__cld_.Controllers
+namespace GwaFind.Controllers
 {
     public class HomeController : Controller
     {
         public IActionResult Index()
         {
+            if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                return RedirectToAction("Index", "Admin");
+
             return View();
         }
 
