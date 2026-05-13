@@ -1,0 +1,268 @@
+﻿@model GwaFind.Models.Listing
+@{
+    ViewData["Title"] = "Post a listing";
+}
+
+<div class="container" style="padding-top:32px;padding-bottom:48px">
+    <div class="create-layout">
+        <div class="create-form">
+            <div class="create-header">
+                <h1>Post a new listing</h1>
+                <p>Fill in your property details so seekers can find your gwa</p>
+            </div>
+
+            <form asp-controller="Listing" asp-action="Create" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        Please fix the errors below and try again.
+                    </div>
+                }
+
+                <!-- LISTING TYPE -->
+                <div class="create-section">
+                    <div class="create-section-title">Listing type</div>
+                    <div class="type-toggle">
+                        <button type="button" class="type-btn active" onclick="setType('Rent', this)">
+                            <i class="fa-solid fa-key"></i> For rent
+                        </button>
+                        <button type="button" class="type-btn" onclick="setType('Sale', this)">
+                            <i class="fa-solid fa-building"></i> For sale
+                        </button>
+                    </div>
+                    <input type="hidden" asp-for="ListingType" id="listingTypeInput" value="Rent" />
+                    <span asp-validation-for="ListingType" class="text-danger"></span>
+                </div>
+
+                <!-- PROPERTY DETAILS -->
+                <div class="create-section">
+                    <div class="create-section-title">Property details</div>
+
+                    <div class="form-group">
+                        <label asp-for="Title">Property title</label>
+                        <input asp-for="Title" class="form-control" placeholder="e.g. Spacious 2-bedroom apartment in Ntinda" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="PropertyType">Property type</label>
+                            <select asp-for="PropertyType" class="form-control">
+                                <option value="">Select type</option>
+                                <option value="Apartment">Apartment</option>
+                                <option value="House">House</option>
+                                <option value="Self-contained">Self-contained</option>
+                                <option value="Land">Land</option>
+                                <option value="Commercial">Commercial</option>
+                            </select>
+                            <span asp-validation-for="PropertyType" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="District">District</label>
+                            <input asp-for="District" class="form-control" placeholder="e.g. Kampala" />
+                            <span asp-validation-for="District" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Location">Exact location</label>
+                        <input asp-for="Location" class="form-control" placeholder="e.g. Ntinda, near Shell petrol station" />
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-row form-row-3">
+                        <div class="form-group">
+                            <label asp-for="Bedrooms">Bedrooms</label>
+                            <select asp-for="Bedrooms" class="form-control">
+                                <option value="0">Studio</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Bathrooms">Bathrooms</label>
+                            <select asp-for="Bathrooms" class="form-control">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="AreaSqM">Area (m²)</label>
+                            <input asp-for="AreaSqM" type="number" class="form-control" placeholder="e.g. 80" min="0" step="0.1" />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="Price">Price (UGX)</label>
+                            <input asp-for="Price" type="number" class="form-control" placeholder="e.g. 800000" min="10000" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PricePeriod">Price period</label>
+                            <select asp-for="PricePeriod" class="form-control">
+                                <option value="Month">Month</option>
+                                <option value="Year">Year</option>
+                                <option value="Fixed price">Fixed price</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label>
+                        <textarea asp-for="Description" class="form-control" rows="4"
+                                  placeholder="Describe the property — key features, surroundings, what's included in rent, etc."></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <!-- PHOTOS -->
+                <!-- PHOTOS -->
+                <div class="create-section">
+                    <div class="create-section-title">Photos</div>
+                    <div class="upload-box" onclick="document.getElementById('imageUpload').click()">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p>Click to upload photos</p>
+                        <span>PNG, JPG up to 5MB each — upload as many as you want</span>
+                        <input type="file" id="imageUpload" name="images" multiple accept="image/*"
+                               style="display:none" />
+                    </div>
+                    <div id="imageCount" style="font-size:13px;color:#888;margin-top:8px;"></div>
+                    <div id="imagePreview" class="image-preview"></div>
+                </div>
+
+                <!-- AMENITIES -->
+                <div class="create-section">
+                    <div class="create-section-title">Amenities</div>
+                    <div class="amenities-grid">
+                        @foreach (var amenity in new[] { "WiFi ready", "Parking", "Security", "Backup power", "Swimming pool", "Gym", "Gated compound", "Garden", "CCTV" })
+                        {
+                            <label class="amenity-check">
+                                <input type="checkbox" class="amenity-cb" value="@amenity" />
+                                @amenity
+                            </label>
+                        }
+                    </div>
+                    <input type="hidden" asp-for="Amenities" id="amenitiesInput" />
+                </div>
+
+                <!-- CONTACT -->
+                <div class="create-section">
+                    <div class="create-section-title">Contact details</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label asp-for="ContactPhone">Contact phone</label>
+                            <input asp-for="ContactPhone" class="form-control" placeholder="+256 7XX XXX XXX" />
+                            <span asp-validation-for="ContactPhone" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PreferredContact">Preferred contact method</label>
+                            <select asp-for="PreferredContact" class="form-control">
+                                <option value="WhatsApp">WhatsApp</option>
+                                <option value="Phone call">Phone call</option>
+                                <option value="Email">Email</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="create-actions">
+                    <a asp-controller="Dashboard" asp-action="Index" class="btn">Cancel</a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-check"></i> Submit listing
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // ── Listing type toggle ──────────────────────────────────────
+        function setType(type, btn) {
+            document.getElementById('listingTypeInput').value = type;
+            document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        // ── Image handling ───────────────────────────────────────────
+        let allFiles = []; // master list of File objects
+
+        document.getElementById('imageUpload').addEventListener('change', function (e) {
+            const newFiles = Array.from(e.target.files);
+
+            // Append only files not already in the list (match by name+size)
+            newFiles.forEach(file => {
+                const isDupe = allFiles.some(f => f.name === file.name && f.size === file.size);
+                if (!isDupe) allFiles.push(file);
+            });
+
+            syncInputFiles();
+            renderPreviews();
+        });
+
+        function removeFile(index) {
+            allFiles.splice(index, 1);
+            syncInputFiles();
+            renderPreviews();
+        }
+
+        // Keep the actual file input in sync with allFiles
+        function syncInputFiles() {
+            const dt = new DataTransfer();
+            allFiles.forEach(f => dt.items.add(f));
+            document.getElementById('imageUpload').files = dt.files;
+        }
+
+        function renderPreviews() {
+            const preview = document.getElementById('imagePreview');
+            preview.innerHTML = '';
+
+            allFiles.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = e => {
+                    const div = document.createElement('div');
+                    div.className = 'preview-thumb';
+                    div.style.position = 'relative';
+                    div.innerHTML = `
+                        <img src="${e.target.result}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" />
+                        <button type="button" onclick="removeFile(${index})"
+                            style="position:absolute;top:4px;right:4px;background:rgba(0,0,0,0.6);
+                                   color:#fff;border:none;border-radius:50%;width:24px;height:24px;
+                                   cursor:pointer;font-size:13px;display:flex;align-items:center;
+                                   justify-content:center;line-height:1;">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <div style="position:absolute;bottom:4px;left:4px;background:rgba(0,0,0,0.5);
+                                    color:#fff;font-size:10px;padding:2px 6px;border-radius:4px;
+                                    max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+                            ${file.name}
+                        </div>
+                    `;
+                    preview.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            });
+
+            // Show count badge
+            const countEl = document.getElementById('imageCount');
+            if (countEl) countEl.textContent = allFiles.length > 0
+                ? `${allFiles.length} photo${allFiles.length > 1 ? 's' : ''} selected`
+                : '';
+        }
+
+        // ── Amenities ────────────────────────────────────────────────
+        document.querySelector('form').addEventListener('submit', function () {
+            const checked = Array.from(document.querySelectorAll('.amenity-cb:checked'))
+                                 .map(cb => cb.value);
+            document.getElementById('amenitiesInput').value = checked.join(',');
+        });
+    </script>
+}

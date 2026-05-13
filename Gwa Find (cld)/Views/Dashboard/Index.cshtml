@@ -1,0 +1,123 @@
+﻿@model List<GwaFind.Models.Listing>
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="dash-layout">
+    <!-- SIDEBAR -->
+    <div class="dash-sidebar">
+        <div class="dash-user">
+            <div class="dash-avatar">@User.Identity.Name[0].ToString().ToUpper()</div>
+            <div class="dash-user-name">@User.Identity.Name</div>
+            <div class="dash-user-role">Property owner</div>
+        </div>
+
+        <a asp-action="Index" class="dash-nav-item active">
+            <i class="fa-solid fa-chart-bar"></i> Dashboard
+        </a>
+        <a asp-controller="Listing" asp-action="Create" class="dash-nav-item">
+            <i class="fa-solid fa-plus"></i> Post listing
+        </a>
+        <a asp-controller="Account" asp-action="Logout" class="dash-nav-item" style="color:#A32D2D;margin-top:auto">
+            <i class="fa-solid fa-right-from-bracket"></i> Log out
+        </a>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="dash-content">
+        <div class="dash-header">
+            <div class="dash-title">Dashboard</div>
+            <a asp-controller="Listing" asp-action="Create" class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i> Post new listing
+            </a>
+        </div>
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">@TempData["Success"]</div>
+        }
+
+        <!-- STATS -->
+        <div class="grid-4" style="margin-bottom:24px">
+            <div class="stat-card">
+                <div class="stat-num">@ViewBag.TotalListings</div>
+                <div class="stat-label">Total listings</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num green">@ViewBag.ActiveListings</div>
+                <div class="stat-label">Active</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num warn">@ViewBag.PendingListings</div>
+                <div class="stat-label">Pending approval</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-num">@ViewBag.TotalInquiries</div>
+                <div class="stat-label">Inquiries received</div>
+            </div>
+        </div>
+
+        <!-- LISTINGS TABLE -->
+        <div class="table-card">
+            <div class="table-header">
+                <div class="table-title">My listings</div>
+                <a asp-controller="Listing" asp-action="Create" class="btn btn-sm">+ Add listing</a>
+            </div>
+
+            @if (!Model.Any())
+            {
+                <div class="empty-state">
+                    <i class="fa-solid fa-house-circle-xmark"></i>
+                    <p>You haven't posted any listings yet.</p>
+                    <a asp-controller="Listing" asp-action="Create" class="btn btn-primary">Post your first listing</a>
+                </div>
+            }
+            else
+            {
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Inquiries</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var listing in Model)
+                        {
+                            <tr>
+                                <td><strong>@listing.Title</strong><br /><small style="color:#888">@listing.Location, @listing.District</small></td>
+                                <td>@listing.ListingType</td>
+                                <td>UGX @listing.Price.ToString("N0")</td>
+                                <td>
+                                    <span class="badge badge-@listing.Status.ToLower()">
+                                        @listing.Status
+                                    </span>
+                                </td>
+                                <td>@(listing.Inquiries?.Count ?? 0)</td>
+                                <td>
+                                    <div style="display:flex;gap:6px">
+                                        <a asp-controller="Listing" asp-action="Details" asp-route-id="@listing.Id" class="btn btn-sm">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <form asp-action="Delete" method="post" style="display:inline"
+                                              onsubmit="return confirm('Delete this listing?')">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="id" value="@listing.Id" />
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>

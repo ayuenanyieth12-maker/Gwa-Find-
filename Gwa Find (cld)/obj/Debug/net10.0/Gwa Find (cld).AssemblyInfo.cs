@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Gwa Find (cld)")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d2df5283e37b97d20e19ceb3541794710e63ec6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22d77312aaec9ba756c0dcb4a880d88cf19c4c12")]
 [assembly: System.Reflection.AssemblyProductAttribute("Gwa Find (cld)")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Gwa Find (cld)")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

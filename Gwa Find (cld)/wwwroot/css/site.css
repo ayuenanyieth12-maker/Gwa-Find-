@@ -986,7 +986,7 @@ main {
         color: #888;
     }
 
-/* LISTING INFO */
+/* Listing info */
 .details-info {
     margin-top: 20px;
 }
@@ -1027,7 +1027,7 @@ main {
         margin-right: 4px;
     }
 
-/* SPECS */
+/* Specs */
 .details-specs {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1054,7 +1054,7 @@ main {
     margin-top: 2px;
 }
 
-/* DESCRIPTION */
+/* Description */
 .details-section {
     margin-bottom: 24px;
 }
@@ -1073,7 +1073,7 @@ main {
     line-height: 1.8;
 }
 
-/* AMENITIES */
+/* Amenities */
 .amenities-list {
     display: flex;
     flex-wrap: wrap;
@@ -1093,7 +1093,7 @@ main {
         margin-right: 4px;
     }
 
-/* REPORT */
+/* Report */
 .report-row {
     padding: 16px 0;
     border-top: 1px solid #f0f0ee;
@@ -1112,7 +1112,7 @@ main {
         margin-right: 6px;
     }
 
-/* OWNER CARD */
+/* Owner card */
 .owner-card {
     background: #fff;
     border: 1px solid #e8e8e6;
@@ -1162,7 +1162,7 @@ main {
     margin-top: 0;
 }
 
-/* MODAL */
+/* Modal */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -1198,5 +1198,202 @@ main {
     border: none;
     font-size: 18px;
     cursor: pointer;
+    color: #888;
+}
+
+/* Create listing page */
+.create-layout {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.create-header {
+    margin-bottom: 28px;
+}
+
+    .create-header h1 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .create-header p {
+        font-size: 14px;
+        color: #888;
+    }
+
+.create-section {
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid #f0f0ee;
+}
+
+    .create-section:last-of-type {
+        border-bottom: none;
+    }
+
+.create-section-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #1a1a1a;
+}
+
+.type-toggle {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.type-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1.5px solid #ddd;
+    font-size: 14px;
+    font-weight: 500;
+    background: #fff;
+    color: #888;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+}
+
+    .type-btn.active {
+        border-color: #1D9E75;
+        background: #E1F5EE;
+        color: #085041;
+    }
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.form-row-3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.upload-box {
+    border: 2px dashed #ddd;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    cursor: pointer;
+    background: #fafaf8;
+    transition: all 0.2s;
+    margin-bottom: 12px;
+}
+
+    .upload-box:hover {
+        border-color: #1D9E75;
+        background: #f0fdf8;
+    }
+
+    .upload-box i {
+        font-size: 32px;
+        color: #1D9E75;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .upload-box p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 4px;
+    }
+
+    .upload-box span {
+        font-size: 12px;
+        color: #aaa;
+    }
+
+.image-preview {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.preview-thumb {
+    width: 80px;
+    height: 64px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e8e8e6;
+}
+
+    .preview-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.amenity-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #444;
+    cursor: pointer;
+}
+
+    .amenity-check input {
+        accent-color: #1D9E75;
+    }
+
+.create-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 16px;
+}
+
+/* Dashboard */
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.dash-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.dash-user {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0ee;
+}
+
+.dash-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #E1F5EE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #085041;
+    margin-bottom: 8px;
+}
+
+.dash-user-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.dash-user-role {
+    font-size: 12px;
     color: #888;
 }
