@@ -78,7 +78,7 @@
                         <div class="spec-label">Bathrooms</div>
                     </div>
                     <div class="spec-item">
-                        <div class="spec-val">@Model.AreaSqM m²</div>
+                        <div class="spec-val">@(Model.AreaSqM.HasValue ? $"{Model.AreaSqM} m²" : "N/A")</div>
                         <div class="spec-label">Area</div>
                     </div>
                     <div class="spec-item">

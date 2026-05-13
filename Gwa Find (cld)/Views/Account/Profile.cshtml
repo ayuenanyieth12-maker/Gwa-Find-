@@ -1,6 +1,7 @@
 ﻿@model GwaFind.Models.ProfileViewModel
 @{
     ViewData["Title"] = "My Profile";
+    var isOwner = User.IsInRole("Owner");
 }
 
 <div class="dash-layout">
@@ -16,21 +17,35 @@
                 <div class="dash-avatar">@(ViewBag.FullName?[0].ToString().ToUpper() ?? "?")</div>
             }
             <div class="dash-user-name">@ViewBag.FullName</div>
-            <div class="dash-user-role">Property owner</div>
+            <div class="dash-user-role">@(isOwner ? "Property owner" : "House seeker")</div>
         </div>
 
-        <a asp-controller="Dashboard" asp-action="Index" class="dash-nav-item">
-            <i class="fa-solid fa-chart-bar"></i> Dashboard
-        </a>
-        <a asp-controller="Dashboard" asp-action="MyListings" class="dash-nav-item">
-            <i class="fa-solid fa-list"></i> My listings
-        </a>
-        <a asp-controller="Listing" asp-action="Create" class="dash-nav-item">
-            <i class="fa-solid fa-plus"></i> Post listing
-        </a>
+        @if (isOwner)
+        {
+            <a asp-controller="Dashboard" asp-action="Index" class="dash-nav-item">
+                <i class="fa-solid fa-chart-bar"></i> Dashboard
+            </a>
+            <a asp-controller="Dashboard" asp-action="MyListings" class="dash-nav-item">
+                <i class="fa-solid fa-list"></i> My listings
+            </a>
+            <a asp-controller="Listing" asp-action="Create" class="dash-nav-item">
+                <i class="fa-solid fa-plus"></i> Post listing
+            </a>
+        }
+        else
+        {
+            <a asp-controller="Listing" asp-action="Index" class="dash-nav-item">
+                <i class="fa-solid fa-magnifying-glass"></i> Browse listings
+            </a>
+            <a asp-controller="Dashboard" asp-action="Favorites" class="dash-nav-item">
+                <i class="fa-solid fa-heart"></i> Saved listings
+            </a>
+        }
+
         <a asp-controller="Account" asp-action="Profile" class="dash-nav-item active">
             <i class="fa-solid fa-user"></i> Profile
         </a>
+
         <form asp-controller="Account" asp-action="Logout" method="post" style="margin-top:auto">
             @Html.AntiForgeryToken()
             <button type="submit" class="dash-nav-item" style="color:#A32D2D;background:none;border:none;width:100%;text-align:left;cursor:pointer">
@@ -51,7 +66,6 @@
         }
 
         <div class="table-card" style="max-width:560px">
-            @* <form asp-action="Profile" method="post"> *@
             <form asp-action="Profile" method="post" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
 

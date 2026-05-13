@@ -86,13 +86,19 @@ namespace GwaFind.Controllers
         [Authorize(Roles = "Seeker")]
         public async Task<IActionResult> Favorites()
         {
-            var userId = _userManager.GetUserId(User);
+            var user = await _userManager.GetUserAsync(User);
+            var userId = user?.Id;
+
             var favorites = await _db.Favorites
                 .Include(f => f.Listing)
                 .ThenInclude(l => l.Images)
                 .Where(f => f.SeekerId == userId)
                 .OrderByDescending(f => f.SavedAt)
                 .ToListAsync();
+
+            ViewBag.FullName = user?.FullName ?? user?.Email;
+            ViewBag.ProfilePicture = user?.ProfilePicture;
+
             return View(favorites);
         }
     }
