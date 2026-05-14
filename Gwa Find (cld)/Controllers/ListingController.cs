@@ -20,7 +20,6 @@ namespace GwaFind.Controllers
             _env = env;
         }
 
-        // GET: Browse all listings
         public async Task<IActionResult> Index(string search, string type, string propertyType, int? minPrice, int? maxPrice, int? bedrooms)
         {
             var listings = _db.Listings
@@ -55,7 +54,6 @@ namespace GwaFind.Controllers
             return View(await listings.OrderByDescending(l => l.CreatedAt).ToListAsync());
         }
 
-        // GET: Listing details
         public async Task<IActionResult> Details(int id)
         {
             var listing = await _db.Listings
@@ -67,11 +65,9 @@ namespace GwaFind.Controllers
             return listing == null ? NotFound() : View(listing);
         }
 
-        // GET: Create form
         [Authorize(Roles = "Owner")]
         public IActionResult Create() => View();
 
-        // POST: Create listing
         [Authorize(Roles = "Owner")]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -124,7 +120,129 @@ namespace GwaFind.Controllers
             return RedirectToAction("Index", "Dashboard");
         }
 
-        // POST: Send inquiry
+        [Authorize(Roles = "Owner")]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var userId = _userManager.GetUserId(User);
+            var listing = await _db.Listings
+                .Include(l => l.Images)
+                .FirstOrDefaultAsync(l => l.Id == id && l.OwnerId == userId);
+
+            if (listing == null) return NotFound();
+
+            var user = await _userManager.GetUserAsync(User);
+            ViewBag.FullName = user?.FullName ?? user?.Email;
+            ViewBag.ProfilePicture = user?.ProfilePicture;
+
+            return View(listing);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Owner")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Listing model, List<IFormFile> NewImages)
+        {
+            var userId = _userManager.GetUserId(User);
+            var listing = await _db.Listings
+                .Include(l => l.Images)
+                .FirstOrDefaultAsync(l => l.Id == id && l.OwnerId == userId);
+
+            if (listing == null) return NotFound();
+
+            ModelState.Remove("OwnerId");
+            ModelState.Remove("Owner");
+            ModelState.Remove("Images");
+            ModelState.Remove("Inquiries");
+            ModelState.Remove("AreaSqM");
+            ModelState.Remove("Status");
+            ModelState.Remove("CreatedAt");
+
+            if (!ModelState.IsValid) return View(listing);
+
+            listing.Title = model.Title;
+            listing.Description = model.Description;
+            listing.Price = model.Price;
+            listing.ListingType = model.ListingType;
+            listing.PropertyType = model.PropertyType;
+            listing.Location = model.Location;
+            listing.District = model.District;
+            listing.Bedrooms = model.Bedrooms;
+            listing.Bathrooms = model.Bathrooms;
+            listing.AreaSqM = model.AreaSqM;
+            listing.Amenities = model.Amenities ?? "";
+            listing.Status = "Pending";
+
+            if (NewImages != null && NewImages.Count > 0)
+            {
+                var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads", "properties");
+                Directory.CreateDirectory(uploadsFolder);
+
+                foreach (var file in NewImages.Where(f => f.Length > 0))
+                {
+                    var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                    var filePath = Path.Combine(uploadsFolder, fileName);
+                    using var stream = new FileStream(filePath, FileMode.Create);
+                    await file.CopyToAsync(stream);
+                    _db.ListingImages.Add(new ListingImage
+                    {
+                        ListingId = listing.Id,
+                        ImagePath = "/uploads/properties/" + fileName
+                    });
+                }
+            }
+
+            await _db.SaveChangesAsync();
+            TempData["Success"] = "Listing updated! It's pending admin approval again.";
+            return RedirectToAction("MyListings", "Dashboard");
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Owner")]
+        public async Task<IActionResult> DeleteImage(int imageId, int listingId)
+        {
+            var userId = _userManager.GetUserId(User);
+            var image = await _db.ListingImages
+                .Include(i => i.Listing)
+                .FirstOrDefaultAsync(i => i.Id == imageId && i.Listing.OwnerId == userId);
+
+            if (image != null)
+            {
+                var fullPath = Path.Combine(_env.WebRootPath, image.ImagePath.TrimStart('/'));
+                if (System.IO.File.Exists(fullPath))
+                    System.IO.File.Delete(fullPath);
+
+                _db.ListingImages.Remove(image);
+                await _db.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Edit", new { id = listingId });
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Owner")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var userId = _userManager.GetUserId(User);
+            var listing = await _db.Listings
+                .Include(l => l.Images)
+                .FirstOrDefaultAsync(l => l.Id == id && l.OwnerId == userId);
+
+            if (listing != null)
+            {
+                foreach (var img in listing.Images)
+                {
+                    var fullPath = Path.Combine(_env.WebRootPath, img.ImagePath.TrimStart('/'));
+                    if (System.IO.File.Exists(fullPath))
+                        System.IO.File.Delete(fullPath);
+                }
+                _db.Listings.Remove(listing);
+                await _db.SaveChangesAsync();
+                TempData["Success"] = "Listing deleted.";
+            }
+
+            return RedirectToAction("MyListings", "Dashboard");
+        }
+
         [Authorize(Roles = "Seeker")]
         [HttpPost]
         public async Task<IActionResult> SendInquiry(int listingId, string message)
@@ -148,14 +266,11 @@ namespace GwaFind.Controllers
             return RedirectToAction("Details", new { id = listingId });
         }
 
-        // POST: Save to favorites
         [Authorize(Roles = "Seeker")]
         [HttpPost]
         public async Task<IActionResult> SaveFavorite(int listingId)
         {
             var userId = _userManager.GetUserId(User)!;
-
-            // Don't save duplicate
             var exists = await _db.Favorites.AnyAsync(f => f.SeekerId == userId && f.ListingId == listingId);
             if (!exists)
             {
@@ -176,7 +291,6 @@ namespace GwaFind.Controllers
             return RedirectToAction("Details", new { id = listingId });
         }
 
-        // POST: Remove from favorites
         [Authorize(Roles = "Seeker")]
         [HttpPost]
         public async Task<IActionResult> RemoveFavorite(int listingId)
@@ -192,7 +306,6 @@ namespace GwaFind.Controllers
             return RedirectToAction("Favorites", "Dashboard");
         }
 
-        // POST: Report listing
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Report(int listingId, string reason)
