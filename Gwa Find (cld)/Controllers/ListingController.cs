@@ -1,5 +1,6 @@
 ﻿using GwaFind.Data;
 using GwaFind.Models;
+using GwaFind.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,12 +13,14 @@ namespace GwaFind.Controllers
         private readonly ApplicationDbContext _db;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IWebHostEnvironment _env;
+        private readonly NotificationService _notifications;
 
-        public ListingController(ApplicationDbContext db, UserManager<ApplicationUser> userManager, IWebHostEnvironment env)
+        public ListingController(ApplicationDbContext db, UserManager<ApplicationUser> userManager, IWebHostEnvironment env, NotificationService notifications)
         {
             _db = db;
             _userManager = userManager;
             _env = env;
+            _notifications = notifications;
         }
 
         public async Task<IActionResult> Index(string search, string type, string propertyType, int? minPrice, int? maxPrice, int? bedrooms)
@@ -30,7 +33,7 @@ namespace GwaFind.Controllers
 
             if (!string.IsNullOrEmpty(search))
                 listings = listings.Where(l => l.Location.Contains(search) ||
-                                               l.District.Contains(search) ||
+                                               (l.District != null && l.District.Contains(search)) ||
                                                l.Title.Contains(search));
             if (!string.IsNullOrEmpty(type))
                 listings = listings.Where(l => l.ListingType == type);
@@ -116,6 +119,17 @@ namespace GwaFind.Controllers
                 await _db.SaveChangesAsync();
             }
 
+            var admins = await _userManager.GetUsersInRoleAsync("Admin");
+            var owner = await _userManager.GetUserAsync(User);
+            foreach (var admin in admins)
+            {
+                await _notifications.SendAsync(
+                    admin.Id,
+                    $"New listing pending approval: \"{model.Title}\" by {owner?.FullName}",
+                    "/Admin"
+                );
+            }
+
             TempData["Success"] = "Listing submitted! It will go live once approved.";
             return RedirectToAction("Index", "Dashboard");
         }
@@ -176,7 +190,6 @@ namespace GwaFind.Controllers
             {
                 var uploadsFolder = Path.Combine(_env.WebRootPath, "uploads", "properties");
                 Directory.CreateDirectory(uploadsFolder);
-
                 foreach (var file in NewImages.Where(f => f.Length > 0))
                 {
                     var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
@@ -210,7 +223,6 @@ namespace GwaFind.Controllers
                 var fullPath = Path.Combine(_env.WebRootPath, image.ImagePath.TrimStart('/'));
                 if (System.IO.File.Exists(fullPath))
                     System.IO.File.Delete(fullPath);
-
                 _db.ListingImages.Remove(image);
                 await _db.SaveChangesAsync();
             }
@@ -253,17 +265,40 @@ namespace GwaFind.Controllers
                 return RedirectToAction("Details", new { id = listingId });
             }
 
-            _db.Inquiries.Add(new Inquiry
+            var userId = _userManager.GetUserId(User)!;
+
+            var inquiry = new Inquiry
             {
                 ListingId = listingId,
-                SeekerId = _userManager.GetUserId(User)!,
+                SeekerId = userId,
                 Message = message,
+                SentAt = DateTime.Now
+            };
+            _db.Inquiries.Add(inquiry);
+            await _db.SaveChangesAsync();
+
+            _db.Messages.Add(new Message
+            {
+                InquiryId = inquiry.Id,
+                SenderId = userId,
+                Content = message,
                 SentAt = DateTime.Now
             });
             await _db.SaveChangesAsync();
 
-            TempData["Success"] = "Inquiry sent successfully!";
-            return RedirectToAction("Details", new { id = listingId });
+            var listing = await _db.Listings.FindAsync(listingId);
+            var seeker = await _userManager.GetUserAsync(User);
+            if (listing != null)
+            {
+                await _notifications.SendAsync(
+                    listing.OwnerId,
+                    $"{seeker?.FullName ?? "Someone"} sent an inquiry about \"{listing.Title}\"",
+                    $"/Chat/Thread/{inquiry.Id}"
+                );
+            }
+
+            TempData["Success"] = "Inquiry sent! Continue the conversation in Messages.";
+            return RedirectToAction("Thread", "Chat", new { id = inquiry.Id });
         }
 
         [Authorize(Roles = "Seeker")]
@@ -274,12 +309,7 @@ namespace GwaFind.Controllers
             var exists = await _db.Favorites.AnyAsync(f => f.SeekerId == userId && f.ListingId == listingId);
             if (!exists)
             {
-                _db.Favorites.Add(new Favorite
-                {
-                    SeekerId = userId,
-                    ListingId = listingId,
-                    SavedAt = DateTime.Now
-                });
+                _db.Favorites.Add(new Favorite { SeekerId = userId, ListingId = listingId, SavedAt = DateTime.Now });
                 await _db.SaveChangesAsync();
                 TempData["Success"] = "Saved to favorites!";
             }
@@ -287,7 +317,6 @@ namespace GwaFind.Controllers
             {
                 TempData["Success"] = "Already in your saved listings.";
             }
-
             return RedirectToAction("Details", new { id = listingId });
         }
 
@@ -310,14 +339,27 @@ namespace GwaFind.Controllers
         [HttpPost]
         public async Task<IActionResult> Report(int listingId, string reason)
         {
+            var userId = _userManager.GetUserId(User)!;
             _db.Reports.Add(new Report
             {
                 ListingId = listingId,
-                ReportedById = _userManager.GetUserId(User)!,
+                ReportedById = userId,
                 Reason = reason,
                 ReportedAt = DateTime.Now
             });
             await _db.SaveChangesAsync();
+
+            var listing = await _db.Listings.FirstOrDefaultAsync(l => l.Id == listingId);
+            var admins = await _userManager.GetUsersInRoleAsync("Admin");
+            foreach (var admin in admins)
+            {
+                await _notifications.SendAsync(
+                    admin.Id,
+                    $"⚑ \"{listing?.Title}\" was flagged: {reason}",
+                    "/Admin"
+                );
+            }
+
             TempData["Success"] = "Report submitted. Thank you.";
             return RedirectToAction("Details", new { id = listingId });
         }

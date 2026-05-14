@@ -3,12 +3,88 @@
   "WorkspaceRootPath": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\dashboard\\mylistings.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\dashboard\\mylistings.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\chat\\thread.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\chat\\thread.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\notification\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\notification\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\chat\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\controllers\\chatcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\controllers\\listingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\controllers\\listingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\listing\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\listing\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\models\\adminviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\models\\adminviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\controllers\\notificationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\services\\notificationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\gwa find (cld).csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\gwa find (cld).csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\dashboard\\mylistings.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\dashboard\\mylistings.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\listing\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -19,48 +95,20 @@
       "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\listing\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\models\\listing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\models\\listing.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\account\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\account\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\dashboard\\favorites.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -79,14 +127,6 @@
       "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\listing\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\listing\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\listing\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\listing\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -97,6 +137,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|c:\\users\\user\\desktop\\asp.net and c#\\end of semester project\\gwa find (cld)\\gwa find (cld)\\migrations\\20260514063019_addnotificationsandmessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9BED3FD-1FA1-6D77-9FF4-FB08590FB1B3}|Gwa Find (cld)\\Gwa Find (cld).csproj|solutionrelative:gwa find (cld)\\migrations\\20260514063019_addnotificationsandmessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -106,24 +150,141 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Listing\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Listing\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Listing\\Edit.cshtml",
-              "RelativeToolTip": "Gwa Find (cld)\\Views\\Listing\\Edit.cshtml",
-              "ViewState": "AgIAAKsAAAAAAAAAAAAowMQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-14T06:03:45.864Z",
+              "DocumentIndex": 7,
+              "Title": "ListingController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\ListingController.cs",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Controllers\\ListingController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\ListingController.cs",
+              "RelativeToolTip": "Gwa Find (cld)\\Controllers\\ListingController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG4BAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-12T06:18:55.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Gwa Find (cld)\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAiwIgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T19:57:10.8Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Admin\\Index.cshtml",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Admin\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Admin\\Index.cshtml",
+              "RelativeToolTip": "Gwa Find (cld)\\Views\\Admin\\Index.cshtml",
+              "ViewState": "AgIAACABAAAAAAAAAAAkwD0BAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-13T19:58:02.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Chat\\Index.cshtml",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Chat\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Chat\\Index.cshtml",
+              "RelativeToolTip": "Gwa Find (cld)\\Views\\Chat\\Index.cshtml",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAqwC8AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-14T06:49:07.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Thread.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Chat\\Thread.cshtml",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Chat\\Thread.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Chat\\Thread.cshtml",
+              "RelativeToolTip": "Gwa Find (cld)\\Views\\Chat\\Thread.cshtml",
+              "ViewState": "AgIAADEBAAAAAAAAAAAiwEkBAAB+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-14T06:49:41.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ChatController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\ChatController.cs",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Controllers\\ChatController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\ChatController.cs",
+              "RelativeToolTip": "Gwa Find (cld)\\Controllers\\ChatController.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAAAC0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T06:36:20.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Message.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Models\\Message.cs",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Models\\Message.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Models\\Message.cs",
+              "RelativeToolTip": "Gwa Find (cld)\\Models\\Message.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T06:28:32.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Notification\\Index.cshtml",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Notification\\Index.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Notification\\Index.cshtml",
+              "RelativeToolTip": "Gwa Find (cld)\\Views\\Notification\\Index.cshtml",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAAACgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-14T06:48:32.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAwwG4AAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-11T19:58:59.769Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Listing\\Create.cshtml",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Listing\\Create.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Listing\\Create.cshtml",
+              "RelativeToolTip": "Gwa Find (cld)\\Views\\Listing\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-12T08:27:40.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Controllers\\HomeController.cs",
@@ -131,11 +292,122 @@
               "RelativeToolTip": "Gwa Find (cld)\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T20:36:12.852Z"
+              "WhenOpened": "2026-05-13T20:36:12.852Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Gwa Find (cld)\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAywEAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T19:59:56.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AdminViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Models\\AdminViewModel.cs",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Models\\AdminViewModel.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Models\\AdminViewModel.cs",
+              "RelativeToolTip": "Gwa Find (cld)\\Models\\AdminViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T20:18:51.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "Gwa Find (cld)\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAIEFAAAAAAAAAAAAAJYFAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-05-12T06:10:45.159Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "NotificationController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\NotificationController.cs",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Controllers\\NotificationController.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\NotificationController.cs",
+              "RelativeToolTip": "Gwa Find (cld)\\Controllers\\NotificationController.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAmwEkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T06:35:43.065Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "NotificationService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Services\\NotificationService.cs",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Services\\NotificationService.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Services\\NotificationService.cs",
+              "RelativeToolTip": "Gwa Find (cld)\\Services\\NotificationService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAYwBoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T06:34:13.488Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Gwa Find (cld).csproj",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Gwa Find (cld).csproj",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Gwa Find (cld).csproj",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Gwa Find (cld).csproj",
+              "RelativeToolTip": "Gwa Find (cld)\\Gwa Find (cld).csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-05-14T06:33:21.477Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "20260514063019_AddNotificationsAndMessages.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Migrations\\20260514063019_AddNotificationsAndMessages.cs",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Migrations\\20260514063019_AddNotificationsAndMessages.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Migrations\\20260514063019_AddNotificationsAndMessages.cs",
+              "RelativeToolTip": "Gwa Find (cld)\\Migrations\\20260514063019_AddNotificationsAndMessages.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T06:30:19.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Models\\Notification.cs",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Models\\Notification.cs",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Models\\Notification.cs",
+              "RelativeToolTip": "Gwa Find (cld)\\Models\\Notification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-14T06:27:00.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Listing\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Listing\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Listing\\Edit.cshtml",
+              "RelativeToolTip": "Gwa Find (cld)\\Views\\Listing\\Edit.cshtml",
+              "ViewState": "AgIAAKsAAAAAAAAAAAAowMQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-14T06:03:45.864Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Properties\\launchSettings.json",
@@ -147,55 +419,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 15,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Program.cs",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Program.cs",
               "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Program.cs",
               "RelativeToolTip": "Gwa Find (cld)\\Program.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAADQAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-13T20:08:17.706Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Gwa Find (cld)\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Gwa Find (cld)\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAwwDMAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T19:59:56.958Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Admin\\Index.cshtml",
-              "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Admin\\Index.cshtml",
-              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Admin\\Index.cshtml",
-              "RelativeToolTip": "Gwa Find (cld)\\Views\\Admin\\Index.cshtml",
-              "ViewState": "AgIAACMBAAAAAAAAAADwvz0BAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-13T19:58:02.78Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "Gwa Find (cld)\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "Gwa Find (cld)\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAUwHQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-13T19:57:10.8Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 27,
               "Title": "Favorites.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Dashboard\\Favorites.cshtml",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Dashboard\\Favorites.cshtml",
@@ -207,7 +443,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 30,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Models\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Models\\ApplicationUser.cs",
@@ -219,7 +455,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 26,
               "Title": "Profile.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Account\\Profile.cshtml",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Account\\Profile.cshtml",
@@ -231,7 +467,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 20,
               "Title": "MyListings.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Dashboard\\MyListings.cshtml",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Dashboard\\MyListings.cshtml",
@@ -239,12 +475,11 @@
               "RelativeToolTip": "Gwa Find (cld)\\Views\\Dashboard\\MyListings.cshtml",
               "ViewState": "AgIAAFAAAAAAAAAAAAAmwIEAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-13T08:02:54.04Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-13T08:02:54.04Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 29,
               "Title": "AccountViewModels.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Models\\AccountViewModels.cs",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Models\\AccountViewModels.cs",
@@ -256,7 +491,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 28,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Dashboard\\Index.cshtml",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Dashboard\\Index.cshtml",
@@ -268,7 +503,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 19,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Controllers\\DashboardController.cs",
@@ -280,7 +515,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 25,
               "Title": "Listing.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Models\\Listing.cs",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Models\\Listing.cs",
@@ -292,19 +527,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Listing\\Create.cshtml",
-              "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Listing\\Create.cshtml",
-              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Listing\\Create.cshtml",
-              "RelativeToolTip": "Gwa Find (cld)\\Views\\Listing\\Create.cshtml",
-              "ViewState": "AgIAAHsAAAAAAAAAAAAYwIkAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-12T08:27:40.145Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 22,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Listing\\Details.cshtml",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Listing\\Details.cshtml",
@@ -312,12 +535,11 @@
               "RelativeToolTip": "Gwa Find (cld)\\Views\\Listing\\Details.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-12T06:50:06.406Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-12T06:50:06.406Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 31,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Listing\\Index.cshtml",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Listing\\Index.cshtml",
@@ -329,32 +551,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ListingController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\ListingController.cs",
-              "RelativeDocumentMoniker": "Gwa Find (cld)\\Controllers\\ListingController.cs",
-              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\ListingController.cs",
-              "RelativeToolTip": "Gwa Find (cld)\\Controllers\\ListingController.cs",
-              "ViewState": "AgIAACsBAAAAAAAAAAAmwEQBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-12T06:18:55.615Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "Gwa Find (cld)\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "Gwa Find (cld)\\wwwroot\\css\\site.css",
-              "ViewState": "AgIAAIEFAAAAAAAAAAAAAIkFAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-05-12T06:10:45.159Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 23,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Controllers\\AccountController.cs",
@@ -366,7 +563,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 32,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Home\\Index.cshtml",
@@ -378,7 +575,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 33,
               "Title": "Register.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Account\\Register.cshtml",
@@ -387,18 +584,6 @@
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-05-11T20:00:07.867Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\user\\Desktop\\ASP.NET and C#\\END OF SEMESTER PROJECT\\Gwa Find (cld)\\Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Gwa Find (cld)\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAACgAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-11T19:58:59.769Z"
             }
           ]
         }

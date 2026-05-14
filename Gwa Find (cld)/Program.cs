@@ -1,5 +1,6 @@
 using GwaFind.Data;
 using GwaFind.Models;
+using GwaFind.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 .AddDefaultTokenProviders();
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<NotificationService>();
 
 var app = builder.Build();
 

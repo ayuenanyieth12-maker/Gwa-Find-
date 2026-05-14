@@ -17,7 +17,7 @@
                 Gwa<span>Find</span>
             </a>
             <div class="nav-links">
-                @if (User.Identity.IsAuthenticated)
+                @if (User.Identity?.IsAuthenticated == true)
                 {
                     @if (User.IsInRole("Seeker"))
                     {
@@ -39,10 +39,23 @@
                         <a href="#" onclick="if(typeof showTab !== 'undefined') showTab('users'); return false;">All users</a>
                         <a asp-controller="Admin" asp-action="Index">Admin panel</a>
                     }
-                    <form asp-controller="Account" asp-action="Logout" method="post" style="display:inline">
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-outline">Log out</button>
-                    </form>
+
+                    <!-- Icons + logout pushed to the right -->
+                    <div style="display:flex;align-items:center;gap:8px;margin-left:auto">
+                        <a href="/Chat" class="nav-icon-btn" title="Messages">
+                            <i class="fa-solid fa-comments"></i>
+                        </a>
+                        <a href="/Notification" class="nav-icon-btn" title="Notifications">
+                            <span style="position:relative;display:inline-block">
+                                <i class="fa-solid fa-bell"></i>
+                                <span id="notifBadge" style="display:none;position:absolute;top:-6px;right:-8px;background:#e53935;color:#fff;border-radius:99px;font-size:.65rem;padding:1px 5px;font-weight:700"></span>
+                            </span>
+                        </a>
+                        <form asp-controller="Account" asp-action="Logout" method="post" style="margin:0">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-outline">Log out</button>
+                        </form>
+                    </div>
                 }
                 else
                 {
@@ -53,11 +66,11 @@
             </div>
         </div>
     </nav>
-    <!-- PAGE CONTENT -->
+
     <main>
         @RenderBody()
     </main>
-    <!-- FOOTER -->
+
     <footer class="footer">
         <div class="footer-container">
             <p class="footer-logo">Gwa<span>Find</span></p>
@@ -70,7 +83,29 @@
             <p class="footer-copy">&copy; 2026 GwaFind. All rights reserved.</p>
         </div>
     </footer>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <script>
+            async function refreshBadge() {
+                try {
+                    const res = await fetch('/Notification/UnreadCount');
+                    const count = await res.json();
+                    const badge = document.getElementById('notifBadge');
+                    if (count > 0) {
+                        badge.textContent = count > 9 ? '9+' : count;
+                        badge.style.display = 'inline';
+                    } else {
+                        badge.style.display = 'none';
+                    }
+                } catch {}
+            }
+            refreshBadge();
+            setInterval(refreshBadge, 30000);
+        </script>
+    }
 </body>
 </html>

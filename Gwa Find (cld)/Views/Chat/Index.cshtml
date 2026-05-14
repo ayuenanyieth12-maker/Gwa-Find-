@@ -1,0 +1,48 @@
+﻿@model List<GwaFind.Models.Inquiry>
+@{
+    ViewData["Title"] = "Messages";
+    var unreadCounts = ViewBag.UnreadCounts as Dictionary<int, int> ?? new();
+    var currentUserId = ViewBag.CurrentUserId as string;
+}
+
+<div class="dash-layout">
+    <div class="dash-content" style="max-width:760px;margin:0 auto">
+        <div class="dash-header">
+            <div class="dash-title">Messages</div>
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div class="empty-state">
+                <i class="fa-solid fa-comments"></i>
+                <p>No conversations yet.</p>
+            </div>
+        }
+        else
+        {
+            <div style="display:flex;flex-direction:column;gap:10px">
+                @foreach (var inquiry in Model)
+                {
+                    var unread = unreadCounts.ContainsKey(inquiry.Id) ? unreadCounts[inquiry.Id] : 0;
+                    var otherPerson = inquiry.SeekerId == currentUserId ? inquiry.Listing.Owner : inquiry.Seeker;
+                    var thumb = inquiry.Listing.Images?.FirstOrDefault()?.ImagePath ?? "/img/placeholder.jpg";
+
+                    <a href="/Chat/Thread/@inquiry.Id" style="text-decoration:none">
+                        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;gap:14px;align-items:center;transition:.15s" onmouseover="this.style.borderColor='var(--primary)'" onmouseout="this.style.borderColor='var(--border)'">
+                            <img src="@thumb" style="width:56px;height:56px;object-fit:cover;border-radius:10px;flex-shrink:0" />
+                            <div style="flex:1;min-width:0">
+                                <div style="font-weight:600;color:var(--text-main);font-size:.97rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">@inquiry.Listing.Title</div>
+                                <div style="font-size:.84rem;color:#888;margin-top:2px">with @(otherPerson?.FullName ?? otherPerson?.Email ?? "User")</div>
+                                <div style="font-size:.82rem;color:#aaa;margin-top:2px">@inquiry.SentAt.ToString("MMM d, yyyy")</div>
+                            </div>
+                            @if (unread > 0)
+                            {
+                                <span style="background:var(--primary);color:#fff;border-radius:99px;padding:2px 9px;font-size:.78rem;font-weight:600;flex-shrink:0">@unread new</span>
+                            }
+                        </div>
+                    </a>
+                }
+            </div>
+        }
+    </div>
+</div>

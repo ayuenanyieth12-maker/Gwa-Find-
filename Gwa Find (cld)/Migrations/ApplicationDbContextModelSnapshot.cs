@@ -259,6 +259,72 @@ namespace Gwa_Find__cld_.Migrations
                     b.ToTable("ListingImages");
                 });
 
+            modelBuilder.Entity("GwaFind.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("InquiryId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SenderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("SentAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InquiryId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Messages");
+                });
+
+            modelBuilder.Entity("GwaFind.Models.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("GwaFind.Models.Report", b =>
                 {
                     b.Property<int>("Id")
@@ -483,10 +549,40 @@ namespace Gwa_Find__cld_.Migrations
                     b.Navigation("Listing");
                 });
 
+            modelBuilder.Entity("GwaFind.Models.Message", b =>
+                {
+                    b.HasOne("GwaFind.Models.Inquiry", "Inquiry")
+                        .WithMany()
+                        .HasForeignKey("InquiryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GwaFind.Models.ApplicationUser", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Inquiry");
+
+                    b.Navigation("Sender");
+                });
+
+            modelBuilder.Entity("GwaFind.Models.Notification", b =>
+                {
+                    b.HasOne("GwaFind.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("GwaFind.Models.Report", b =>
                 {
                     b.HasOne("GwaFind.Models.Listing", "Listing")
-                        .WithMany()
+                        .WithMany("Reports")
                         .HasForeignKey("ListingId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
@@ -558,6 +654,8 @@ namespace Gwa_Find__cld_.Migrations
                     b.Navigation("Images");
 
                     b.Navigation("Inquiries");
+
+                    b.Navigation("Reports");
                 });
 #pragma warning restore 612, 618
         }

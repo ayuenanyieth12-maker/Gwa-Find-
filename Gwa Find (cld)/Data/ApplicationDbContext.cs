@@ -14,6 +14,8 @@ namespace GwaFind.Data
         public DbSet<Inquiry> Inquiries { get; set; }
         public DbSet<Favorite> Favorites { get; set; }
         public DbSet<Report> Reports { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -58,6 +60,24 @@ namespace GwaFind.Data
                 .WithMany()
                 .HasForeignKey(r => r.ReportedById)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<Notification>()
+                .HasOne(n => n.User)
+                .WithMany()
+                .HasForeignKey(n => n.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Message>()
+                .HasOne(m => m.Sender)
+                .WithMany()
+                .HasForeignKey(m => m.SenderId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            builder.Entity<Message>()
+                .HasOne(m => m.Inquiry)
+                .WithMany()
+                .HasForeignKey(m => m.InquiryId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using GwaFind.Data;
 using GwaFind.Models;
+using GwaFind.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,54 +13,57 @@ namespace GwaFind.Controllers
     {
         private readonly ApplicationDbContext _db;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly NotificationService _notifications;
 
-        public AdminController(ApplicationDbContext db, UserManager<ApplicationUser> userManager)
+        public AdminController(ApplicationDbContext db, UserManager<ApplicationUser> userManager, NotificationService notifications)
         {
             _db = db;
             _userManager = userManager;
+            _notifications = notifications;
         }
 
         public async Task<IActionResult> Index()
         {
-            var user = await _userManager.GetUserAsync(User);
-
-            ViewBag.FullName = user?.FullName ?? user?.Email;
-            ViewBag.TotalListings = await _db.Listings.CountAsync();
-            ViewBag.PendingListings = await _db.Listings.CountAsync(l => l.Status == "Pending");
-            ViewBag.ActiveListings = await _db.Listings.CountAsync(l => l.Status == "Active");
-            ViewBag.DeclinedListings = await _db.Listings.CountAsync(l => l.Status == "Declined");
-            ViewBag.TotalUsers = await _userManager.Users.CountAsync();
-            ViewBag.TotalOwners = (await _userManager.GetUsersInRoleAsync("Owner")).Count;
-            ViewBag.TotalSeekers = (await _userManager.GetUsersInRoleAsync("Seeker")).Count;
-            ViewBag.TotalReports = await _db.Reports.CountAsync();
-
-            var pendingListings = await _db.Listings
-                .Include(l => l.Owner)
+            var pending = await _db.Listings
                 .Include(l => l.Images)
+                .Include(l => l.Owner)
                 .Where(l => l.Status == "Pending")
                 .OrderByDescending(l => l.CreatedAt)
                 .ToListAsync();
 
-            var flaggedListings = await _db.Listings
-                .Include(l => l.Owner)
+            // Get listings that have reports
+            var flaggedListingIds = await _db.Reports
+                .Select(r => r.ListingId)
+                .Distinct()
+                .ToListAsync();
+
+            var flagged = await _db.Listings
                 .Include(l => l.Images)
+                .Include(l => l.Owner)
                 .Include(l => l.Reports)
-                .Where(l => l.Reports.Any())
-                .OrderByDescending(l => l.Reports.Count)
+                .Where(l => flaggedListingIds.Contains(l.Id))
                 .ToListAsync();
 
-            var allUsers = await _userManager.Users
-                .OrderByDescending(u => u.CreatedAt)
-                .ToListAsync();
+            var users = await _userManager.Users.ToListAsync();
 
-            ViewBag.PendingListingsList = pendingListings;
-            ViewBag.FlaggedListings = flaggedListings;
-            ViewBag.AllUsers = allUsers;
+            ViewBag.PendingListingsList = pending;
+            ViewBag.FlaggedListings = flagged;
+            ViewBag.AllUsers = users;
+
+            ViewBag.PendingListings = pending.Count;
+            ViewBag.TotalListings = await _db.Listings.CountAsync();
+            ViewBag.ActiveListings = await _db.Listings.CountAsync(l => l.Status == "Active");
+            ViewBag.TotalReports = await _db.Reports.CountAsync();
+            ViewBag.TotalUsers = users.Count;
+
+            var ownerIds = (await _userManager.GetUsersInRoleAsync("Owner")).Select(u => u.Id).ToHashSet();
+            var seekerIds = (await _userManager.GetUsersInRoleAsync("Seeker")).Select(u => u.Id).ToHashSet();
+            ViewBag.OwnerCount = ownerIds.Count;
+            ViewBag.SeekerCount = seekerIds.Count;
 
             return View();
         }
 
-        // Approve listing
         [HttpPost]
         public async Task<IActionResult> Approve(int id)
         {
@@ -68,12 +72,16 @@ namespace GwaFind.Controllers
             {
                 listing.Status = "Active";
                 await _db.SaveChangesAsync();
-                TempData["Success"] = $"Listing '{listing.Title}' approved.";
+                await _notifications.SendAsync(
+                    listing.OwnerId,
+                    $"✅ Your listing \"{listing.Title}\" has been approved and is now live!",
+                    $"/Listing/Details/{listing.Id}"
+                );
+                TempData["Success"] = "Listing approved.";
             }
             return RedirectToAction("Index");
         }
 
-        // Decline listing
         [HttpPost]
         public async Task<IActionResult> Decline(int id)
         {
@@ -82,16 +90,23 @@ namespace GwaFind.Controllers
             {
                 listing.Status = "Declined";
                 await _db.SaveChangesAsync();
-                TempData["Success"] = $"Listing '{listing.Title}' declined.";
+                await _notifications.SendAsync(
+                    listing.OwnerId,
+                    $"❌ Your listing \"{listing.Title}\" was declined by admin.",
+                    "/Dashboard/MyListings"
+                );
+                TempData["Success"] = "Listing declined.";
             }
             return RedirectToAction("Index");
         }
 
-        // Remove listing entirely
         [HttpPost]
-        public async Task<IActionResult> Remove(int id)
+        public async Task<IActionResult> RemoveListing(int id)
         {
-            var listing = await _db.Listings.FindAsync(id);
+            var listing = await _db.Listings
+                .Include(l => l.Images)
+                .FirstOrDefaultAsync(l => l.Id == id);
+
             if (listing != null)
             {
                 _db.Listings.Remove(listing);
@@ -101,15 +116,20 @@ namespace GwaFind.Controllers
             return RedirectToAction("Index");
         }
 
-        // Delete user
         [HttpPost]
         public async Task<IActionResult> DeleteUser(string id)
         {
             var user = await _userManager.FindByIdAsync(id);
             if (user != null)
             {
+                var roles = await _userManager.GetRolesAsync(user);
+                if (roles.Contains("Admin"))
+                {
+                    TempData["Error"] = "Cannot delete admin accounts.";
+                    return RedirectToAction("Index");
+                }
                 await _userManager.DeleteAsync(user);
-                TempData["Success"] = $"User '{user.FullName}' deleted.";
+                TempData["Success"] = "User deleted.";
             }
             return RedirectToAction("Index");
         }

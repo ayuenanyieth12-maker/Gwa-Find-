@@ -38,6 +38,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/user/Desktop/ASP.NET and C\#/END OF SEMESTER PROJECT/Gwa Find (cld)/Gwa Find (cld)/Views/Chat/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/ASP.NET and C\#/END OF SEMESTER PROJECT/Gwa Find (cld)/Gwa Find (cld)/Views/Chat/Thread.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxUaHJlYWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/user/Desktop/ASP.NET and C\#/END OF SEMESTER PROJECT/Gwa Find (cld)/Gwa Find (cld)/Views/Dashboard/Favorites.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEZhdm9yaXRlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -72,6 +80,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/user/Desktop/ASP.NET and C\#/END OF SEMESTER PROJECT/Gwa Find (cld)/Gwa Find (cld)/Views/Listing/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlzdGluZ1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/ASP.NET and C\#/END OF SEMESTER PROJECT/Gwa Find (cld)/Gwa Find (cld)/Views/Notification/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTm90aWZpY2F0aW9uXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/user/Desktop/ASP.NET and C\#/END OF SEMESTER PROJECT/Gwa Find (cld)/Gwa Find (cld)/Views/Shared/Error.cshtml]

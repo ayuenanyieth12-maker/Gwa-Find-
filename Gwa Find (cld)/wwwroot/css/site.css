@@ -1416,3 +1416,16 @@ main {
     object-fit: cover;
     margin-bottom: 8px;
 }
+
+.nav-icon-btn {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: background .15s;
+    text-decoration: none;
+}
+
+    .nav-icon-btn:hover {
+        background: var(--bg-hover);
+    }

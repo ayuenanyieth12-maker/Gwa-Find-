@@ -62,8 +62,11 @@ wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
 wwwroot\uploads\profiles\db05b1fb-271d-460b-8269-5eb412c0bdae.jpeg
+wwwroot\uploads\properties\0c6a40e5-9cf0-4e6b-b577-1f1034fb56cd.jpeg
 wwwroot\uploads\properties\357ad4b7-fe9b-4282-830b-f805666fafa1.jpeg
 wwwroot\uploads\properties\37ca242e-fd95-4e8c-9826-1d0e97144dbe.jpeg
+wwwroot\uploads\properties\3a7c8ae2-844e-43a3-bbd2-4c4f0571b540.jpeg
+wwwroot\uploads\properties\4976b227-38ad-46ed-a2cb-4dcd47b9ec4d.jpeg
 wwwroot\uploads\properties\7b3fb09a-f956-4f37-a813-3f8584786d7c.jpeg
 wwwroot\uploads\properties\a149b8e8-de18-41e5-ae23-4307a9d064be.jpeg
 C:\Users\user\Desktop\ASP.NET and C#\END OF SEMESTER PROJECT\Gwa Find (cld)\Gwa Find (cld)\wwwroot\css\site.css
